@@ -9,11 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css"> <!-- Ruta a la raíz -->
+    
+    <!-- RUTA CORREGIDA: ../style.css para subir un nivel desde la carpeta /posts/ -->
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-    <!-- COPIA Y PEGA AQUÍ TU HEADER COMPLETO -->
     <header class="main-header" id="main-header">
         <div class="container header-container">
             <a href="/index.html" class="logo-link" aria-label="GlyphCode Home">
@@ -28,7 +29,9 @@
                     <a href="/contacto.html">Contacto</a>
                 </nav>
                 <div class="header-actions">
-                    <!-- ... el resto de tu header ... -->
+                    <form class="search-form" id="search-form"><input type="search" placeholder="Buscar..." class="search-input"><button type="submit" class="search-button" aria-label="Buscar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+                    <button class="search-toggle-mobile" id="search-toggle-mobile" aria-label="Abrir buscador"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                    <button class="hamburger-button" id="hamburger-button" aria-label="Abrir menú"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
                 </div>
             </div>
         </div>
@@ -36,9 +39,9 @@
 
     <main>
         <div class="container page-content">
-             <div class="blog-post-layout">
-                <!-- Columna principal con el contenido del artículo -->
-                <div class="blog-main-content">
+             <div class="post-layout-wrapper">
+                
+                <div class="post-main-content">
                     <article class="post-full-content">
                         <header class="post-full-header">
                             <h1 class="post-full-title">Optimizando Python con Rust: Un Caso Práctico</h1>
@@ -49,7 +52,8 @@
                             </div>
                         </header>
                         <figure class="post-full-image">
-                            <img src="/assets/images/rust-python.jpg" alt="Logo de Rust y Python juntos">
+                            <!-- RUTA CORREGIDA: ../assets/ para subir un nivel -->
+                            <img src="../assets/images/rust-python.jpg" alt="Logo de Rust y Python juntos">
                         </figure>
                         <section class="post-full-body">
                             <p>Python es fantástico por su simplicidad y su ecosistema, pero a veces su rendimiento en tareas computacionalmente intensivas deja que desear. Cuando te enfrentas a un cuello de botella, una solución es reescribir esa parte crítica en un lenguaje de más bajo nivel como C o Rust.</p>
@@ -59,7 +63,7 @@
                             <p>En este análisis, tomamos un script que procesa imágenes pixel por pixel y medimos el tiempo de ejecución. Luego, aislamos la función de procesamiento y la reescribimos en Rust.</p>
                             <h3>El Código</h3>
                             <p>Así se ve la función en Rust que se expondrá a Python:</p>
-                            <pre><code class="language-rust">
+                            <pre><code>
 use pyo3::prelude::*;
 
 /// Procesa una imagen para invertir sus colores.
@@ -78,26 +82,34 @@ fn process_image_fast(mut image_data: Vec<u8>) -> PyResult<Vec<u8>> {
                     </article>
                 </div>
 
-                <!-- Barra lateral -->
-                <aside class="blog-sidebar">
+                <aside class="post-sidebar-column">
                     <div class="sidebar-widget">
-                        <h4 class="sidebar-title">// OTROS ANÁLISIS</h4>
+                        <h4 class="sidebar-title">// Otros Análisis</h4>
                         <ul class="sidebar-post-list">
-                            <!-- Aquí ponemos enlaces a OTROS posts, NO a este mismo -->
                             <li><a href="/posts/fine-tuning-llm.html">Fine-Tuning de un LLM para Generación de Código</a></li>
-                            <!-- Añadirías más enlaces aquí a medida que crees más posts -->
                         </ul>
                     </div>
                 </aside>
+
             </div>
         </div>
     </main>
 
-    <!-- COPIA Y PEGA AQUÍ TU FOOTER COMPLETO -->
     <footer class="main-footer">
-        <!-- ... tu footer completo ... -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column"><h4 class="footer-title">GlyphCode</h4><p>Forjando herramientas para el futuro digital. Código, creatividad y cafeína.</p></div>
+                <div class="footer-column"><h4 class="footer-title">Navegación</h4><ul class="footer-links"><li><a href="/index.html">Inicio</a></li><li><a href="#">Modelos IA</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/sobre-mi.html">Sobre Mí</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
+                <div class="footer-column"><h4 class="footer-title">Conectar</h4><div class="footer-social"><a href="https://github.com/omar17101983" target="_blank" aria-label="GitHub">GitHub</a><a href="#" target="_blank" aria-label="Twitter">Twitter</a><a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a></div></div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 GlyphCode. Todos los derechos reservados.</p>
+                <nav class="footer-legal-nav"><a href="#">Política de Privacidad</a><a href="#">Política de Cookies</a><a href="#">Términos y Condiciones</a></nav>
+            </div>
+        </div>
     </footer>
     
-    <script src="/script.js"></script>
+    <!-- RUTA CORREGIDA: ../script.js para subir un nivel -->
+    <script src="../script.js"></script>
 </body>
 </html>

@@ -115,6 +115,15 @@ a {
 .page-subtitle { max-width: 700px; margin: -20px auto 60px auto; text-align: center; font-size: 1.1rem; color: var(--color-text-muted); }
 .about-me-full-content p { max-width: 800px; margin: 0 auto 20px auto; font-size: 1.2rem; line-height: 1.8; color: var(--color-text-muted); }
 .about-me-full-content p:first-child { color: var(--color-text); font-size: 1.5rem; text-align: center; margin-bottom: 40px; }
+.contact-layout { display: grid; grid-template-columns: 1fr; gap: 60px; }
+@media(min-width: 800px) { .contact-layout { grid-template-columns: 2fr 1fr; } }
+.contact-form-wrapper { background-color: var(--color-surface); padding: 40px; border: 1px solid var(--color-border); }
+.form-group { margin-bottom: 25px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--color-text-muted); }
+.form-group input, .form-group textarea { width: 100%; background-color: var(--color-background); border: 1px solid var(--color-border); color: var(--color-text); padding: 12px; font-size: 1rem; }
+.form-group input:focus, .form-group textarea:focus { outline: 1px solid var(--neon-primary); }
+.contact-alternatives-title { font-family: var(--font-display); font-size: 1.8rem; color: var(--neon-secondary); margin-bottom: 20px; }
+.alternatives-list { list-style: none; padding: 0; } .alternatives-list li { margin-bottom: 15px; color: var(--color-text-muted); }
 
 /* --- FOOTER --- */
 .main-footer { padding: 60px 0 40px; margin-top: 80px; background-color: var(--color-surface); border-top: 2px solid var(--color-border); }
@@ -134,11 +143,19 @@ a {
 .footer-legal-nav a:hover { color: var(--neon-primary); }
 
 
-/* === ESTILOS DEL BLOG - LISTADO Y POSTS (SECCIÓN CORREGIDA) === */
+/* === ESTILOS DEL BLOG - LISTADO Y POSTS (SECCIÓN CORREGIDA Y UNIFICADA) === */
 
 /* --- Página de listado (blog.html) --- */
-.blog-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
-@media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); } }
+.blog-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto para móviles */
+    gap: 40px;
+}
+@media (min-width: 768px) {
+    .blog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Múltiples columnas en pantallas grandes */
+    }
+}
 .post-card-blog { background-color: var(--color-surface); border: 1px solid var(--color-border); display: flex; flex-direction: column; }
 .post-card-image-link img { width: 100%; height: 220px; object-fit: cover; display: block; }
 .post-card-content { padding: 25px 30px; display: flex; flex-direction: column; flex-grow: 1; }
@@ -148,9 +165,25 @@ a {
 .post-excerpt { color: var(--color-text-muted); flex-grow: 1; margin-bottom: 25px; }
 
 
-/* --- Página de post individual (AHORA SÍ, COÑO) --- */
-.post-layout-wrapper { display: grid; grid-template-columns: 1fr; gap: 60px; }
-@media(min-width: 950px) { .post-layout-wrapper { grid-template-columns: 3fr 1fr; } }
+/* --- Página de post individual (AQUÍ ESTÁ LA MAGIA) --- */
+
+/* Este es el contenedor principal del layout del post */
+.post-layout-wrapper {
+    display: grid;
+    /* Por defecto (móvil) es 1 columna. La barra lateral se irá debajo del contenido. */
+    grid-template-columns: 1fr; 
+    gap: 60px; /* Espacio entre el contenido principal y la barra lateral cuando esté debajo */
+}
+
+/* En pantallas de más de 950px, cambiamos a 2 columnas */
+@media(min-width: 950px) {
+    .post-layout-wrapper {
+        grid-template-columns: 3fr 1fr; /* Columna principal 3 veces más ancha que la sidebar */
+    }
+}
+
+/* El resto de los estilos del post que ya tenías y que están perfectos */
+.post-main-content { min-width: 0; } /* Fix para que el contenido pre no se desborde */
 .post-full-header { text-align: left; margin-bottom: 40px; }
 .post-full-title { font-family: var(--font-display); font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
 .post-full-meta { color: var(--color-text-muted); }
@@ -161,17 +194,18 @@ a {
 .post-full-body p, .post-full-body ul, .post-full-body blockquote, .post-full-body pre { margin-bottom: 1.5em; }
 .post-full-body h2 { font-family: var(--font-display); color: var(--neon-primary); font-size: 2.2rem; margin: 2em 0 1em; }
 .post-full-body h3 { font-family: var(--font-display); color: var(--neon-primary); font-size: 1.8rem; margin: 2em 0 1em; }
-.post-full-body pre { background-color: #000; border: 1px solid var(--color-border); padding: 1.5em; overflow-x: auto; }
-.post-sidebar-column { }
+.post-full-body pre { background-color: #000; border: 1px solid var(--color-border); padding: 1.5em; overflow-x: auto; font-size: 0.9em; }
+.post-full-body blockquote { border-left: 3px solid var(--neon-primary); padding-left: 1.5em; margin-left: 0; font-style: italic; color: var(--color-text-muted); }
+
+/* Estilos de la barra lateral */
+.post-sidebar-column { } /* No necesita estilos específicos, solo actúa como contenedor del grid */
 .sidebar-widget { margin-bottom: 40px; }
-.sidebar-title { font-family: var(--font-display); font-size: 1.2rem; color: var(--neon-secondary); }
+.sidebar-title { font-family: var(--font-display); font-size: 1.2rem; color: var(--neon-secondary); border-bottom: 1px solid var(--color-border); padding-bottom: 10px;}
 .sidebar-post-list { list-style: none; padding: 0; margin-top: 20px; }
 .sidebar-post-list li { margin-bottom: 15px; border-bottom: 1px solid var(--color-border); padding-bottom: 15px; }
-.sidebar-post-list a { color: var(--color-text-muted); font-weight: 700; }
-.section-title-small { font-family: var(--font-display); font-size: 1.8rem; margin: 80px 0 40px 0; color: var(--color-text); border-bottom: 1px solid var(--color-border); padding-bottom: 20px; }
-.section-title-small span { color: var(--neon-secondary); }
-.related-posts { margin-top: 60px; }
-.related-posts .posts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.sidebar-post-list a { color: var(--color-text-muted); font-weight: 700; transition: color 0.3s;}
+.sidebar-post-list a:hover { color: var(--neon-primary); }
+
 
 /* --- RESPONSIVE GENERAL --- */
 @media (max-width: 950px) {
@@ -183,7 +217,7 @@ a {
     .hamburger-button.is-active .hamburger-line:nth-child(2) { opacity: 0; }
     .hamburger-button.is-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
     .search-toggle-mobile { display: block; }
-    .search-form { position: absolute; top: 100%; left: 0; width: 100%; padding: 15px 20px; background-color: var(--color-surface); border-top: 1px solid var(--color-border); transform: translateY(-200%); transition: transform 0.4s ease; }
+    .search-form { position: absolute; top: 100%; left: 0; width: 100%; padding: 15px 20px; background-color: var(--color-surface); border-top: 1px solid var(--color-border); transform: translateY(-200%); transition: transform 0.4s ease; z-index: -1; }
     .main-header.search-active .search-form { transform: translateY(0); }
     .search-form:hover .search-input, .search-input:focus, .main-header.search-active .search-input { width: 100%; padding: 8px 12px; }
     .footer-grid { text-align: center; }

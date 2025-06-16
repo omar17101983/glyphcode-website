@@ -7,7 +7,6 @@
     <meta name="description" content="Análisis, papers y tutoriales desde la terminal. Explorando el futuro de la IA y el desarrollo de software.">
     <meta name="author" content="Omar">
     
-    <!-- ENLACES A FUENTES Y CSS (Esto va en el HEAD) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
@@ -15,9 +14,6 @@
 </head>
 <body>
 
-    <!-- =============================================== -->
-    <!--          TU HEADER COMPLETO VA AQUÍ             -->
-    <!-- =============================================== -->
     <header class="main-header" id="main-header">
         <div class="container header-container">
             <a href="/index.html" class="logo-link" aria-label="GlyphCode Home">
@@ -48,7 +44,18 @@
                 
                 <div class="blog-grid">
                     
-                    <!-- POST #1: Optimizando Python con Rust -->
+                    <article class="post-card-blog">
+                        <a href="/posts/fine-tuning-llm.html" class="post-card-image-link">
+                            <img src="/assets/images/llm-code.jpg" alt="Visualización abstracta de un modelo de lenguaje generando código.">
+                        </a>
+                        <div class="post-card-content">
+                            <p class="post-meta"><span>12 JULIO, 2024</span> // <span>MODELOS IA</span></p>
+                            <h2 class="post-card-title"><a href="/posts/fine-tuning-llm.html">Fine-Tuning de un LLM para Generación de Código</a></h2>
+                            <p class="post-excerpt">Análisis del proceso de ajuste fino de un modelo de lenguaje para especializarlo en la sintaxis de Kotlin, incluyendo desafíos y resultados.</p>
+                            <a href="/posts/fine-tuning-llm.html" class="post-link">Leer Análisis Completo →</a>
+                        </div>
+                    </article>
+
                     <article class="post-card-blog">
                         <a href="/posts/optimizando-python-con-rust.html" class="post-card-image-link">
                             <img src="/assets/images/rust-python.jpg" alt="Logo de Rust y Python juntos">
@@ -61,23 +68,11 @@
                         </div>
                     </article>
                     
-                    <!-- POST #2: Fine-Tuning de LLM -->
-                    
-
-                    <!-- Si tienes un tercer post, pegarías su tarjeta aquí... -->
-                    <!-- Ejemplo:
-                    <article class="post-card-blog">
-                        ...
-                    </article>
-                    -->
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- =============================================== -->
-    <!--           TU FOOTER COMPLETO VA AQUÍ            -->
-    <!-- =============================================== -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
@@ -92,7 +87,6 @@
         </div>
     </footer>
 
-    <!-- TU SCRIPT.JS SOLO TIENE LA MIERDA DEL MENÚ. NADA MÁS. -->
     <script src="/script.js"></script>
 </body>
 </html>
