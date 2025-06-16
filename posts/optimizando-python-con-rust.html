@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizando Python con Rust /// GlyphCode</title>
+    <meta name="description" content="Exploramos cómo reescribir cuellos de botella de un script de Python en Rust puede multiplicar el rendimiento por 100.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css"> <!-- Ruta a la raíz -->
+</head>
+<body>
+
+    <!-- COPIA Y PEGA AQUÍ TU HEADER COMPLETO -->
+    <header class="main-header" id="main-header">
+        <div class="container header-container">
+            <a href="/index.html" class="logo-link" aria-label="GlyphCode Home">
+                <svg class="logo-svg" width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" class="logo-text">GlyphCode</text></svg>
+            </a>
+            <div class="header-right">
+                <nav class="main-nav" id="main-nav">
+                    <a href="/index.html">Inicio</a>
+                    <a href="#">Herramientas IA</a>
+                    <a href="/blog.html">Blog</a>
+                    <a href="/sobre-mi.html">Sobre Mí</a>
+                    <a href="/contacto.html">Contacto</a>
+                </nav>
+                <div class="header-actions">
+                    <!-- ... el resto de tu header ... -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container page-content">
+             <div class="blog-post-layout">
+                <!-- Columna principal con el contenido del artículo -->
+                <div class="blog-main-content">
+                    <article class="post-full-content">
+                        <header class="post-full-header">
+                            <h1 class="post-full-title">Optimizando Python con Rust: Un Caso Práctico</h1>
+                            <div class="post-full-meta">
+                                <time>20 de Junio, 2024</time>
+                                <span class="bull">•</span>
+                                <span>Por Omar</span>
+                            </div>
+                        </header>
+                        <figure class="post-full-image">
+                            <img src="/assets/images/rust-python.jpg" alt="Logo de Rust y Python juntos">
+                        </figure>
+                        <section class="post-full-body">
+                            <p>Python es fantástico por su simplicidad y su ecosistema, pero a veces su rendimiento en tareas computacionalmente intensivas deja que desear. Cuando te enfrentas a un cuello de botella, una solución es reescribir esa parte crítica en un lenguaje de más bajo nivel como C o Rust.</p>
+                            <h2>¿Por qué Rust?</h2>
+                            <p>Rust ofrece un rendimiento comparable al de C/C++, pero con garantías de seguridad de memoria que eliminan toda una categoría de bugs. Gracias a librerías como PyO3, integrar código Rust en Python es sorprendentemente sencillo.</p>
+                            <blockquote>La combinación de la facilidad de Python para el desarrollo rápido y el rendimiento bruto de Rust para las partes críticas es una estrategia ganadora.</blockquote>
+                            <p>En este análisis, tomamos un script que procesa imágenes pixel por pixel y medimos el tiempo de ejecución. Luego, aislamos la función de procesamiento y la reescribimos en Rust.</p>
+                            <h3>El Código</h3>
+                            <p>Así se ve la función en Rust que se expondrá a Python:</p>
+                            <pre><code class="language-rust">
+use pyo3::prelude::*;
+
+/// Procesa una imagen para invertir sus colores.
+#[pyfunction]
+fn process_image_fast(mut image_data: Vec<u8>) -> PyResult<Vec<u8>> {
+    for pixel in image_data.chunks_mut(4) {
+        pixel[0] = 255 - pixel[0]; // R
+        pixel[1] = 255 - pixel[1]; // G
+        pixel[2] = 255 - pixel[2]; // B
+    }
+    Ok(image_data)
+}
+                            </code></pre>
+                            <p>El resultado fue una aceleración de más de 100 veces en la ejecución de la tarea. Esto demuestra el poder de usar la herramienta adecuada para cada trabajo, combinando lo mejor de ambos mundos.</p>
+                        </section>
+                    </article>
+                </div>
+
+                <!-- Barra lateral -->
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h4 class="sidebar-title">// OTROS ANÁLISIS</h4>
+                        <ul class="sidebar-post-list">
+                            <!-- Aquí ponemos enlaces a OTROS posts, NO a este mismo -->
+                            <li><a href="/posts/fine-tuning-llm.html">Fine-Tuning de un LLM para Generación de Código</a></li>
+                            <!-- Añadirías más enlaces aquí a medida que crees más posts -->
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- COPIA Y PEGA AQUÍ TU FOOTER COMPLETO -->
+    <footer class="main-footer">
+        <!-- ... tu footer completo ... -->
+    </footer>
+    
+    <script src="/script.js"></script>
+</body>
+</html>

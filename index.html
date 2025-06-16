@@ -3,42 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlyphCode /// Cybernetic Dev Tools & Software</title>
-    <meta name="description" content="Explora software, herramientas y aplicaciones originales creadas para resolver problemas reales. Además, encuentra tutoriales de programación en Python, JavaScript y más.">
-    <meta name="author" content="Tu Nombre">
-    
-    <!-- FUENTES DE GOOGLE FONTS -->
+    <title>GlyphCode /// IA & Algorithmic Development</title>
+    <meta name="description" content="Explorando las fronteras de la Inteligencia Artificial. Descubre modelos, herramientas y software creados con Python, PyTorch, TensorFlow y más.">
+    <meta name="author" content="Omar">
+
+    <!-- FUENTES OPTIMIZADAS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap"></noscript>
     
-    <!-- ENLACE A LA HOJA DE ESTILOS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ======================================================= -->
-    <!-- ===========      HEADER (UNA SOLA VEZ)        =========== -->
-    <!-- ======================================================= -->
     <header class="main-header" id="main-header">
         <div class="container header-container">
-            <a href="/" class="logo-link" aria-label="GlyphCode Home">
-                <svg class="logo-svg" width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
-                    <text x="0" y="30" class="logo-text">GlyphCode</text>
-                </svg>
+            <a href="/index.html" class="logo-link" aria-label="GlyphCode Home">
+                <svg class="logo-svg" width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" class="logo-text">GlyphCode</text></svg>
             </a>
             <div class="header-right">
                 <nav class="main-nav" id="main-nav">
-                    <a href="/">Inicio</a>
-                    <a href="/herramientas.html">Herramientas</a>
-                    <a href="/articulos.html">Artículos</a>
+                    <a href="/index.html">Inicio</a>
+                    <a href="#">Herramientas IA</a>
+                    <a href="/blog.html">Blog</a>
                     <a href="/sobre-mi.html">Sobre Mí</a>
+                    <a href="/contacto.html">Contacto</a>
                 </nav>
                 <div class="header-actions">
-                    <form class="search-form" id="search-form">
-                        <input type="search" placeholder="Buscar..." class="search-input">
-                        <button type="submit" class="search-button" aria-label="Buscar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-                    </form>
+                    <form class="search-form" id="search-form"><input type="search" placeholder="Buscar..." class="search-input"><button type="submit" class="search-button" aria-label="Buscar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
                     <button class="search-toggle-mobile" id="search-toggle-mobile" aria-label="Abrir buscador"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
                     <button class="hamburger-button" id="hamburger-button" aria-label="Abrir menú"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
                 </div>
@@ -46,101 +39,29 @@
         </div>
     </header>
 
-    <!-- ======================================================= -->
-    <!-- ===========   CONTENIDO PRINCIPAL (UNA SOLA VEZ)  =========== -->
-    <!-- ======================================================= -->
     <main>
-        <!-- SECCIÓN 1: HERO -->
-        <section class="hero">
-            <div class="container">
-                <h1>Creo Software para Solucionar Problemas.</h1>
-                <p>Bienvenido a mi arsenal digital. Aquí encontrarás herramientas, aplicaciones y software que he forjado, junto con transmisiones de datos (artículos) que explican su núcleo.</p>
-                <a href="#creaciones" class="btn btn-primary">Explorar Creaciones</a>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 2: MIS CREACIONES -->
-        <section id="creaciones" class="my-creations">
-            <div class="container">
-                <h2 class="section-title"><span>01 //</span> Mis Creaciones</h2>
-                <div class="creations-grid">
-                    <div class="creation-card"><div class="creation-icon">🔄</div><h3>Conversor de Unidades CSS</h3><p>Una herramienta web para transmutar px a rem/em. Optimizada con JavaScript vainilla para latencia cero.</p><a href="/tools/css-converter.html" class="btn btn-secondary">Iniciar Interfaz →</a></div>
-                    <div class="creation-card"><div class="creation-icon">🧹</div><h3>File Cleaner Pro</h3><p>Un script de Python que impone orden en tu directorio de descargas, clasificando archivos por su signatura.</p><a href="/software/file-cleaner.html" class="btn btn-secondary">Acceder al Código →</a></div>
-                    <div class="creation-card"><div class="creation-icon">📝</div><h3>Quick Jot</h3><p>Una aplicación de notas de escritorio construida con Kotlin/Compose. Minimalista, rápida y eficiente.</p><a href="/apps/quick-jot.html" class="btn btn-secondary">Inspeccionar →</a></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 3: STACK TECNOLÓGICO -->
-        <section class="tech-stack">
-            <div class="container">
-                <h2 class="section-title"><span>02 //</span> Mi Arsenal Tecnológico</h2>
-                <div class="tech-stack-list">
-                    <span class="tech-tag">Python</span><span class="tech-tag">JavaScript (ES6+)</span><span class="tech-tag">Kotlin</span><span class="tech-tag">Java</span><span class="tech-tag">HTML5</span><span class="tech-tag">CSS3 & Grid/Flexbox</span><span class="tech-tag">Node.js</span><span class="tech-tag">Git & GitHub</span><span class="tech-tag">Docker</span><span class="tech-tag">SQL & NoSQL</span><span class="tech-tag">APIs REST</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 4: ARTÍCULOS RECIENTES -->
-        <section class="latest-posts">
-            <div class="container">
-                <h2 class="section-title"><span>03 //</span> Artículos Recientes</h2>
-                <div class="posts-grid">
-                    <article class="post-card"><h3>El Proceso Detrás de File Cleaner Pro</h3><p>Una inmersión profunda en el desarrollo del script de organización de archivos, desde la concepción hasta la ejecución.</p><a href="#" class="post-link">Leer Transmisión →</a></article>
-                    <article class="post-card"><h3>DOM sin Frameworks para mi Conversor CSS</h3><p>Técnicas de JavaScript puro para forjar una UI interactiva y de alto rendimiento sin dependencias externas.</p><a href="#" class="post-link">Leer Transmisión →</a></article>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 5: SOBRE MÍ (PREVIEW) -->
-        <section class="about-me-preview">
-            <div class="container about-me-container">
-                <div class="about-image-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <div class="about-content">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 20px;"><span>04 //</span> Sobre el Creador</h2>
-                    <p>Soy [Tu Nombre], un programador apasionado por construir soluciones elegantes a problemas complejos. GlyphCode es mi bitácora de campo, donde documento mis proyectos y comparto conocimiento con la comunidad. Mi misión es crear software que no solo funcione, sino que inspire.</p>
-                    <a href="/sobre-mi.html" class="btn btn-secondary">Leer Manifiesto Completo →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 6: CALL TO ACTION (CTA) -->
-        <section class="cta-section">
-            <div class="container">
-                <h3>Únete a la Resistencia.</h3>
-                <p>Recibe notificaciones de nuevas herramientas y transmisiones de datos directamente en tu terminal de correo. Sin spam, solo código de alto voltaje.</p>
-                <form class="subscribe-form">
-                    <input type="email" placeholder="tu_email@dominio.com" required>
-                    <button type="submit" class="btn btn-primary">Suscribirse</button>
-                </form>
-            </div>
-        </section>
+        <section class="hero"><div class="container"><h1>Inteligencia Artificial que escribe, optimiza y entiende el código.</h1><p>Bienvenido a GlyphCode, mi laboratorio digital. Aquí es donde transformo líneas de Python y tensores en herramientas que ayudan a crear mejor software. Mi obsesión: resolver problemas de programación de una forma más inteligente.</p><a href="#creaciones" class="btn btn-primary">Explorar Modelos</a></div></section>
+        <section id="creaciones" class="my-creations"><div class="container"><h2 class="section-title"><span>01 //</span> Modelos y Protocolos Activos</h2><div class="creations-grid"><div class="creation-card"><div class="creation-icon">🧠</div><h3>Code-Optimizer Alpha</h3><p>Entrené este modelo para que actúe como un colega experto en Python. Analiza tu código y te sugiere refactorizaciones para mejorar su rendimiento y hacerlo más legible.</p><a href="#" class="btn btn-secondary">Acceder al Paper →</a></div><div class="creation-card"><div class="creation-icon">📈</div><h3>Log Anomaly Detector</h3><p>Este sistema vigila los logs de servidor como un halcón. Usa machine learning para detectar anomalías en tiempo real y avisarte de posibles fallos antes de que ocurran.</p><a href="#" class="btn btn-secondary">Ver Demo →</a></div><div class="creation-card"><div class="creation-icon">💬</div><h3>Docu-Writer AI</h3><p>Herramienta que utiliza un LLM (Large Language Model) para generar automáticamente documentación técnica para funciones y clases de código, ahorrando horas de trabajo manual.</p><a href="#" class="btn btn-secondary">Probar API →</a></div></div></div></section>
+        <section class="tech-stack"><div class="container"><h2 class="section-title"><span>02 //</span> Mi Stack de IA</h2><div class="tech-stack-list"><span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas & NumPy</span><span class="tech-tag">Hugging Face</span><span class="tech-tag">Docker</span><span class="tech-tag">FastAPI</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">AWS / GCP</span></div></div></section>
+        <section class="latest-posts"><div class="container"><h2 class="section-title"><span>03 //</span> Análisis y Papers</h2><div class="posts-grid"><article class="post-card"><h3>Fine-Tuning de un LLM para Generación de Código</h3><p>Análisis del proceso de ajuste fino de un modelo de lenguaje para especializarlo en la sintaxis de Kotlin, incluyendo los desafíos y resultados.</p><a href="#" class="post-link">Leer Análisis →</a></article><article class="post-card"><h3>Visión por Computadora: Detectando Errores de UI</h3><p>Un experimento utilizando OpenCV y modelos de clasificación de imágenes para detectar automáticamente inconsistencias de diseño en capturas de pantalla de interfaces.</p><a href="#" class="post-link">Leer Análisis →</a></article></div></div></section>
+        <section class="about-me-preview"><div class="container about-me-container"><div class="about-image-placeholder"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><div class="about-content"><h2 class="section-title" style="text-align: left; margin-bottom: 20px;"><span>04 //</span> Sobre el Arquitecto de IA</h2><p>Soy Omar, el arquitecto detrás de GlyphCode. Me fascina el punto exacto donde la IA se cruza con el arte de crear software. No solo escribo código; construyo sistemas que aprenden y evolucionan para resolver problemas complejos de programación de manera autónoma y eficiente.</p><a href="/sobre-mi.html" class="btn btn-secondary">Leer Manifiesto Completo →</a></div></div></section>
+        <section class="cta-section"><div class="container"><h3>Únete a la Red Neuronal.</h3><p>Recibe actualizaciones sobre nuevos modelos, papers y APIs directamente en tu bandeja de entrada. Sin ruido, solo señales de alto valor.</p><form class="subscribe-form"><input type="email" placeholder="tu_email@dominio.com" required><button type="submit" class="btn btn-primary">Suscribirse</button></form></div></section>
     </main>
 
-    <!-- ======================================================= -->
-    <!-- ===========      FOOTER (UNA SOLA VEZ)        =========== -->
-    <!-- ======================================================= -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column"><h4 class="footer-title">GlyphCode</h4><p>Forjando herramientas para el futuro digital. Código, creatividad y cafeína.</p></div>
-                <div class="footer-column"><h4 class="footer-title">Navegación</h4><ul class="footer-links"><li><a href="/">Inicio</a></li><li><a href="/herramientas.html">Herramientas</a></li><li><a href="/articulos.html">Artículos</a></li><li><a href="/sobre-mi.html">Sobre Mí</a></li></ul></div>
-                <div class="footer-column"><h4 class="footer-title">Conectar</h4><div class="footer-social"><a href="https://github.com/tu-usuario" target="_blank" aria-label="GitHub">GitHub</a><a href="https://twitter.com/tu-usuario" target="_blank" aria-label="Twitter">Twitter</a><a href="https://linkedin.com/in/tu-usuario" target="_blank" aria-label="LinkedIn">LinkedIn</a></div></div>
+                <div class="footer-column"><h4 class="footer-title">Navegación</h4><ul class="footer-links"><li><a href="/index.html">Inicio</a></li><li><a href="#">Modelos IA</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/sobre-mi.html">Sobre Mí</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
+                <div class="footer-column"><h4 class="footer-title">Conectar</h4><div class="footer-social"><a href="https://github.com/omar17101983" target="_blank" aria-label="GitHub">GitHub</a><a href="#" target="_blank" aria-label="Twitter">Twitter</a><a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a></div></div>
             </div>
             <div class="footer-bottom">
                 <p>© 2024 GlyphCode. Todos los derechos reservados.</p>
-                <nav class="footer-legal-nav">
-                    <a href="/politica-de-privacidad.html">Política de Privacidad</a>
-                    <a href="/politica-de-cookies.html">Política de Cookies</a>
-                    <a href="/terminos-y-condiciones.html">Términos y Condiciones</a>
-                </nav>
+                <nav class="footer-legal-nav"><a href="#">Política de Privacidad</a><a href="#">Política de Cookies</a><a href="#">Términos y Condiciones</a></nav>
             </div>
         </div>
     </footer>
 
-    <!-- ENLACE AL JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
