@@ -1,15 +1,21 @@
 // ====================================================================
 // ===       LA ÚNICA FUENTE DE VERDAD PARA TODOS LOS POSTS       ===
 // ====================================================================
-// Para añadir un nuevo post, solo tienes que añadir un nuevo objeto
-// al principio de esta lista. La web se actualizará sola.
-
 const posts = [
+    {
+        url: '/posts/por-que-aprender-python.html',
+        image: '/assets/images/python-beginners.jpg',
+        altText: 'Logo de Python sobre un fondo de código abstracto.',
+        date: '2025-06-17',
+        category: 'PROGRAMACIÓN',
+        title: '¿Por Qué Python es el Lenguaje Perfecto para Empezar a Programar?',
+        excerpt: 'Descubre por qué la sintaxis sencilla y el poderoso ecosistema de Python lo convierten en el lenguaje ideal para principiantes.'
+    },
     {
         url: '/posts/optimizando-python-con-rust.html',
         image: '/assets/images/rust-python.jpg',
         altText: 'Logo de Rust y Python juntos',
-        date: '2025-06-16', // Formato AAAA-MM-DD
+        date: '2025-06-16',
         category: 'PYTHON & RUST',
         title: 'Optimizando Python con Rust: Un Caso Práctico',
         excerpt: 'Exploramos cómo reescribir cuellos de botella de un script de Python en Rust puede multiplicar el rendimiento por 100.'
@@ -23,34 +29,27 @@ const posts = [
         title: 'Fine-Tuning de un LLM para Generación de Código',
         excerpt: 'Análisis del proceso de ajuste fino de un modelo de lenguaje para especializarlo en la sintaxis de Kotlin, incluyendo desafíos y resultados.'
     },
-    // --- EJEMPLO DE NUEVO POST ---
-    // {
-    //     url: '/posts/mi-nuevo-post.html',
-    //     image: '/assets/images/nueva-imagen.jpg',
-    //     altText: 'Descripción de la nueva imagen',
-    //     date: '2025-06-17',
-    //     category: 'NUEVA CATEGORÍA',
-    //     title: 'Título de Mi Nuevo Post',
-    //     excerpt: 'Este es un resumen de mi increíble nuevo post.'
-    // },
 ];
 
-// --- FUNCIÓN PARA FORMATEAR LA FECHA (para no repetir código) ---
+// --- FUNCIONES AUXILIARES ---
 function formatPostDate(dateString) {
     const options = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
     return new Date(dateString).toLocaleDateString('es-ES', options).toUpperCase();
 }
 
+const allCategories = [...new Set(posts.map(p => p.category))]; // Obtenemos una lista única de todas las categorías
 
-// --- LÓGICA PARA RENDERIZAR LAS DIFERENTES SECCIONES ---
+// --- RENDERIZADO DE COMPONENTES ---
 
-// 1. Rellena la página del blog (blog.html)
-function renderBlogPosts() {
+// 1. Rellena la página del blog y aplica filtros
+function renderBlogPosts(filterCategory = 'all') {
     const blogGrid = document.getElementById('blog-grid');
-    if (!blogGrid) return; // Solo se ejecuta si encuentra el contenedor
+    if (!blogGrid) return;
 
-    blogGrid.innerHTML = ''; // Limpiamos el contenedor
-    posts.forEach(post => {
+    const filteredPosts = filterCategory === 'all' ? posts : posts.filter(p => p.category === filterCategory);
+    
+    blogGrid.innerHTML = ''; // Limpiamos la rejilla
+    filteredPosts.forEach(post => {
         blogGrid.innerHTML += `
             <article class="post-card-blog">
                 <a href="${post.url}" class="post-card-image-link">
@@ -67,15 +66,13 @@ function renderBlogPosts() {
     });
 }
 
-// 2. Rellena la sección "Análisis y Papers" de la página de inicio (index.html)
+// 2. Rellena la sección de posts recientes en la home
 function renderLatestPosts() {
     const latestPostsGrid = document.getElementById('latest-posts-grid');
     if (!latestPostsGrid) return;
 
     latestPostsGrid.innerHTML = '';
-    const postsToShow = posts.slice(0, 2); // Tomamos solo los 2 primeros (los más nuevos)
-
-    postsToShow.forEach(post => {
+    posts.slice(0, 2).forEach(post => {
         latestPostsGrid.innerHTML += `
             <article class="post-card">
                 <h3>${post.title}</h3>
@@ -86,29 +83,77 @@ function renderLatestPosts() {
     });
 }
 
-// 3. Rellena la barra lateral "Otros Análisis" en cada post individual
+// 3. Rellena la barra lateral en los posts
 function renderSidebarPosts() {
     const sidebarList = document.getElementById('sidebar-post-list');
     if (!sidebarList) return;
 
     sidebarList.innerHTML = '';
     const currentPageUrl = window.location.pathname;
-
-    posts.forEach(post => {
-        // No mostramos el post actual en su propia barra lateral
-        if (post.url === currentPageUrl) {
-            return;
-        }
-        sidebarList.innerHTML += `
-            <li><a href="${post.url}">${post.title}</a></li>
-        `;
+    posts.filter(p => p.url !== currentPageUrl).forEach(post => {
+        sidebarList.innerHTML += `<li><a href="${post.url}">${post.title}</a></li>`;
     });
 }
 
+// 4. Rellena el submenú del blog en el header
+function renderBlogDropdown() {
+    const dropdownMenu = document.getElementById('blog-dropdown-menu');
+    if (!dropdownMenu) return;
 
-// --- EJECUTAR TODO CUANDO LA PÁGINA CARGUE ---
+    dropdownMenu.innerHTML = '';
+    allCategories.forEach(category => {
+        // Creamos un enlace que lleva a la página del blog y pasa la categoría como parámetro
+        dropdownMenu.innerHTML += `<li><a href="/blog.html?categoria=${encodeURIComponent(category)}">${category}</a></li>`;
+    });
+}
+
+// 5. Rellena los botones de filtro en la página del blog
+function renderCategoryFilters() {
+    const filtersContainer = document.getElementById('category-filters');
+    if (!filtersContainer) return;
+
+    // Botón "TODOS"
+    let buttonsHTML = `<button class="category-filter-btn active" data-category="all">TODOS</button>`;
+    
+    // Botones para cada categoría
+    allCategories.forEach(category => {
+        buttonsHTML += `<button class="category-filter-btn" data-category="${category}">${category}</button>`;
+    });
+
+    filtersContainer.innerHTML = buttonsHTML;
+
+    // Añadir funcionalidad a los botones
+    filtersContainer.querySelectorAll('.category-filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            // Actualizar clase activa
+            filtersContainer.querySelector('.active').classList.remove('active');
+            button.classList.add('active');
+            // Renderizar posts con el filtro
+            const category = button.getAttribute('data-category');
+            renderBlogPosts(category);
+        });
+    });
+}
+
+// --- EJECUTAR TODO AL CARGAR LA PÁGINA ---
 document.addEventListener('DOMContentLoaded', () => {
-    renderBlogPosts();
+    // Primero, revisamos si venimos de un clic en el submenú
+    const params = new URLSearchParams(window.location.search);
+    const categoryFromURL = params.get('categoria');
+
+    // Renderizamos todos los componentes
+    renderBlogDropdown();
+    renderCategoryFilters();
+    renderBlogPosts(categoryFromURL || 'all'); // Usamos la categoría de la URL si existe
     renderLatestPosts();
     renderSidebarPosts();
+
+    // Si hay una categoría en la URL, activamos el botón correspondiente
+    if (categoryFromURL) {
+        const filtersContainer = document.getElementById('category-filters');
+        if (filtersContainer) {
+            filtersContainer.querySelector('.active')?.classList.remove('active');
+            filtersContainer.querySelector(`[data-category="${categoryFromURL}"]`)?.classList.add('active');
+        }
+    }
 });
