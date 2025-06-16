@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optimizando Python con Rust /// GlyphCode</title>
     <meta name="description" content="Exploramos cómo reescribir cuellos de botella de un script de Python en Rust puede multiplicar el rendimiento por 100.">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- RUTA CORREGIDA: ../style.css para subir un nivel desde la carpeta /posts/ -->
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -40,7 +37,6 @@
     <main>
         <div class="container page-content">
              <div class="post-layout-wrapper">
-                
                 <div class="post-main-content">
                     <article class="post-full-content">
                         <header class="post-full-header">
@@ -52,9 +48,9 @@
                             </div>
                         </header>
                         <figure class="post-full-image">
-                            <!-- RUTA CORREGIDA: ../assets/ para subir un nivel -->
                             <img src="../assets/images/rust-python.jpg" alt="Logo de Rust y Python juntos">
                         </figure>
+                        <!-- El contenido del artículo, ahora completo -->
                         <section class="post-full-body">
                             <p>Python es fantástico por su simplicidad y su ecosistema, pero a veces su rendimiento en tareas computacionalmente intensivas deja que desear. Cuando te enfrentas a un cuello de botella, una solución es reescribir esa parte crítica en un lenguaje de más bajo nivel como C o Rust.</p>
                             <h2>¿Por qué Rust?</h2>
@@ -85,12 +81,11 @@ fn process_image_fast(mut image_data: Vec<u8>) -> PyResult<Vec<u8>> {
                 <aside class="post-sidebar-column">
                     <div class="sidebar-widget">
                         <h4 class="sidebar-title">// Otros Análisis</h4>
-                        <ul class="sidebar-post-list">
-                            <li><a href="/posts/fine-tuning-llm.html">Fine-Tuning de un LLM para Generación de Código</a></li>
+                        <ul class="sidebar-post-list" id="sidebar-post-list">
+                            <!-- Los otros posts se generarán aquí dinámicamente -->
                         </ul>
                     </div>
                 </aside>
-
             </div>
         </div>
     </main>
@@ -103,13 +98,13 @@ fn process_image_fast(mut image_data: Vec<u8>) -> PyResult<Vec<u8>> {
                 <div class="footer-column"><h4 class="footer-title">Conectar</h4><div class="footer-social"><a href="https://github.com/omar17101983" target="_blank" aria-label="GitHub">GitHub</a><a href="#" target="_blank" aria-label="Twitter">Twitter</a><a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a></div></div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 GlyphCode. Todos los derechos reservados.</p>
+                <p>© 2024 GlyphCode. Todos los derechos reservados.</p>
                 <nav class="footer-legal-nav"><a href="#">Política de Privacidad</a><a href="#">Política de Cookies</a><a href="#">Términos y Condiciones</a></nav>
             </div>
         </div>
     </footer>
     
-    <!-- RUTA CORREGIDA: ../script.js para subir un nivel -->
+    <script src="../posts-data.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>

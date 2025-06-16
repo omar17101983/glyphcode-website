@@ -7,13 +7,10 @@
     <meta name="description" content="Explorando las fronteras de la Inteligencia Artificial. Descubre modelos, herramientas y software creados con Python, PyTorch, TensorFlow y más.">
     <meta name="author" content="Omar">
     <meta name="google-site-verification" content="Uc1f9bB-5Tp_KPtP44-Q7UVXMTIB4dyty_VU3J55nYg"/>
-
-    <!-- FUENTES OPTIMIZADAS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap"></noscript>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -46,20 +43,9 @@
         <section class="tech-stack"><div class="container"><h2 class="section-title"><span>02 //</span> Mi Stack de IA</h2><div class="tech-stack-list"><span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas & NumPy</span><span class="tech-tag">Hugging Face</span><span class="tech-tag">Docker</span><span class="tech-tag">FastAPI</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">AWS / GCP</span></div></div></section>
         
         <section class="latest-posts"><div class="container"><h2 class="section-title"><span>03 //</span> Análisis y Papers</h2>
-            <div class="posts-grid">
-                
-                <article class="post-card">
-                    <h3>Fine-Tuning de un LLM para Generación de Código</h3>
-                    <p>Análisis del proceso de ajuste fino de un modelo de lenguaje para especializarlo en la sintaxis de Kotlin, incluyendo los desafíos y resultados.</p>
-                    <a href="/posts/fine-tuning-llm.html" class="post-link">Leer Análisis →</a>
-                </article>
-                
-                <article class="post-card">
-                    <h3>Optimizando Python con Rust: Un Caso Práctico</h3>
-                    <p>Un caso de estudio práctico donde reescribimos un cuello de botella de Python en Rust, logrando una aceleración de rendimiento de más de 100x.</p>
-                    <a href="/posts/optimizando-python-con-rust.html" class="post-link">Leer Análisis →</a>
-                </article>
-
+            <!-- Este div ahora está vacío y tiene un ID. JavaScript lo rellenará. -->
+            <div class="posts-grid" id="latest-posts-grid">
+                <!-- Los 2 posts más recientes se generarán aquí -->
             </div>
         </div></section>
         
@@ -81,7 +67,9 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts al final del body -->
+    <script src="/posts-data.js"></script>
+    <script src="/script.js"></script>
 
 </body>
 </html>

@@ -9,8 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- RUTA CORREGIDA: ../style.css para subir un nivel desde la carpeta /posts/ -->
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -46,13 +44,12 @@
                         <header class="post-full-header">
                             <h1 class="post-full-title">Fine-Tuning de un LLM para Generación de Código</h1>
                             <div class="post-full-meta">
-                                <time>16 de Junio, 2025</time>
+                                <time>15 de Junio, 2025</time>
                                 <span class="bull">•</span>
                                 <span>Por Omar</span>
                             </div>
                         </header>
                         <figure class="post-full-image">
-                            <!-- RUTA CORREGIDA: ../assets/ para subir un nivel -->
                             <img src="../assets/images/llm-code.jpg" alt="Visualización abstracta de un modelo de lenguaje generando código.">
                         </figure>
                         <section class="post-full-body">
@@ -94,8 +91,9 @@ fun createUserProfile(name: String, email: String): User {
                 <aside class="post-sidebar-column">
                     <div class="sidebar-widget">
                         <h4 class="sidebar-title">// Otros Análisis</h4>
-                        <ul class="sidebar-post-list">
-                            <li><a href="/posts/optimizando-python-con-rust.html">Optimizando Python con Rust: Un Caso Práctico</a></li>
+                        <!-- Esta lista ahora está vacía y tiene un ID. JavaScript la rellenará. -->
+                        <ul class="sidebar-post-list" id="sidebar-post-list">
+                            <!-- Los otros posts se generarán aquí -->
                         </ul>
                     </div>
                 </aside>
@@ -112,13 +110,13 @@ fun createUserProfile(name: String, email: String): User {
                 <div class="footer-column"><h4 class="footer-title">Conectar</h4><div class="footer-social"><a href="https://github.com/omar17101983" target="_blank" aria-label="GitHub">GitHub</a><a href="#" target="_blank" aria-label="Twitter">Twitter</a><a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a></div></div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 GlyphCode. Todos los derechos reservados.</p>
+                <p>© 2024 GlyphCode. Todos los derechos reservados.</p>
                 <nav class="footer-legal-nav"><a href="#">Política de Privacidad</a><a href="#">Política de Cookies</a><a href="#">Términos y Condiciones</a></nav>
             </div>
         </div>
     </footer>
     
-    <!-- RUTA CORREGIDA: ../script.js para subir un nivel -->
+    <script src="../posts-data.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>
