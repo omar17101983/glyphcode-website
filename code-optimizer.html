@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code-Optimizer Alpha /// GlyphCode</title>
+    <meta name="description" content="Herramienta de IA para analizar y optimizar código Python, sugiriendo refactorizaciones para mejorar rendimiento y legibilidad.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================================================== -->
+    <!--           HEADER COMPLETO Y FUNCIONAL            -->
+    <!-- ================================================== -->
+    <header class="main-header" id="main-header">
+        <div class="container header-container">
+            <a href="/index.html" class="logo-link" aria-label="GlyphCode Home">
+                <svg class="logo-svg" width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" class="logo-text">GlyphCode</text></svg>
+            </a>
+            <div class="header-right">
+                <nav class="main-nav" id="main-nav">
+                    <a href="/index.html">Inicio</a>
+                    <!-- ▼▼▼ ENLACE CORREGIDO A LA HERRAMIENTA ▼▼▼ -->
+                    <a href="/code-optimizer.html">Herramientas IA</a>
+                    <div class="nav-item">
+                        <a href="/blog.html">Blog</a>
+                        <ul class="dropdown" id="blog-dropdown-menu">
+                            <!-- Las categorías se generarán aquí -->
+                        </ul>
+                    </div>
+                    <a href="/sobre-mi.html">Sobre Mí</a>
+                    <a href="/contacto.html">Contacto</a>
+                </nav>
+                <div class="header-actions">
+                    <form class="search-form" id="search-form"><input type="search" placeholder="Buscar..." class="search-input"><button type="submit" class="search-button" aria-label="Buscar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+                    <button class="search-toggle-mobile" id="search-toggle-mobile" aria-label="Abrir buscador"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                    <button class="hamburger-button" id="hamburger-button" aria-label="Abrir menú"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <h1 class="page-title">Code-Optimizer Alpha</h1>
+                <p class="page-subtitle">Pega tu código Python a continuación. Mi modelo analizará posibles refactorizaciones para mejorar su eficiencia y legibilidad.</p>
+                
+                <div class="optimizer-container">
+                    <div class="code-input-wrapper">
+                        <label for="python-code-input">Entrada de Código Python:</label>
+                        <textarea id="python-code-input" class="code-editor" spellcheck="false" placeholder="def mi_funcion(lista):
+  if len(lista) == 0:
+    return True"></textarea>
+                    </div>
+                    
+                    <div class="suggestions-output-wrapper">
+                        <label>Sugerencias de Optimización:</label>
+                        <div id="optimization-suggestions" class="suggestions-output">
+                            <p class="placeholder-text">Esperando código para analizar...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="optimizer-action">
+                    <button id="analyze-btn" class="btn btn-primary">Analizar Código >></button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ================================================== -->
+    <!--            FOOTER COMPLETO Y FUNCIONAL           -->
+    <!-- ================================================== -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column"><h4 class="footer-title">GlyphCode</h4><p>Forjando herramientas para el futuro digital. Código, creatividad y cafeína.</p></div>
+                <div class="footer-column"><h4 class="footer-title">Navegación</h4><ul class="footer-links"><li><a href="/index.html">Inicio</a></li><li><a href="/code-optimizer.html">Herramientas IA</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/sobre-mi.html">Sobre Mí</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
+                <div class="footer-column"><h4 class="footer-title">Conectar</h4><div class="footer-social"><a href="https://github.com/omar17101983" target="_blank" aria-label="GitHub">GitHub</a><a href="#" target="_blank" aria-label="Twitter">Twitter</a><a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a></div></div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 GlyphCode. Todos los derechos reservados.</p>
+                <nav class="footer-legal-nav">
+                    <a href="/politica-privacidad.html">Política de Privacidad</a>
+                    <a href="/politica-cookies.html">Política de Cookies</a>
+                    <a href="/terminos-condiciones.html">Términos y Condiciones</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="optimizer.js"></script>
+    <script src="posts-data.js"></script> <!-- Necesario para el submenú del blog -->
+    <script src="script.js"></script> <!-- El script general para el menú hamburguesa, etc. -->
+
+</body>
+</html>

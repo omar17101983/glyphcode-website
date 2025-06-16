@@ -59,7 +59,10 @@ a {
 
 /* --- HEADER Y COMPONENTES GENÉRICOS --- */
 /* --- Estilos para el Submenú del Blog --- */
-.main-nav .nav-item { position: relative; }
+.main-nav .nav-item {
+    display: flex;
+    align-items: center;
+}
 .main-nav .dropdown {
     display: none;
     position: absolute;
@@ -143,7 +146,12 @@ a {
 .main-nav a:hover { color: var(--neon-primary); }
 .hamburger-line { display: block; width: 25px; height: 2px; background-color: currentColor; margin: 6px 0; transition: all 0.3s ease; }
 .btn { font-family: var(--font-display); padding: 12px 30px; border: 2px solid; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 2px; transition: all 0.3s ease; cursor: pointer; }
-.btn-primary { color: var(--neon-primary); border-color: var(--neon-primary); }
+.btn-primary {
+    color: var(--neon-primary);
+    border-color: var(--neon-primary);
+    background-color: transparent; /* Aseguramos fondo transparente */
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.7); /* AÑADIDO: Brillo para el texto */
+}
 .btn-primary:hover { color: var(--color-background); background-color: var(--neon-primary); box-shadow: var(--neon-glow-primary); transform: scale(1.05); }
 .btn-secondary { color: var(--color-text-muted); border-color: var(--color-border); }
 .btn-secondary:hover { color: var(--neon-primary); border-color: var(--neon-primary); }
@@ -290,4 +298,97 @@ a {
     .section-title { font-size: 2rem; }
     .subscribe-form input { min-width: 100%; }
     .post-full-title { font-size: 2.5rem; }
+}
+/* =============================================== */
+/* ===       ESTILOS PARA CODE-OPTIMIZER         === */
+/* =============================================== */
+
+.optimizer-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna en móvil */
+    gap: 40px;
+    margin-top: 40px;
+}
+
+@media (min-width: 900px) {
+    .optimizer-container {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en desktop */
+    }
+}
+
+.code-input-wrapper label,
+.suggestions-output-wrapper label {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.code-editor, .suggestions-output {
+    width: 100%;
+    min-height: 400px;
+    background-color: #000;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: 20px;
+    font-family: 'Space Mono', monospace; /* Fuente de monoespacio para código */
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.code-editor:focus {
+    outline: 1px solid var(--neon-primary);
+}
+
+.suggestions-output {
+    display: flex;
+    flex-direction: column;
+}
+
+.suggestions-output .placeholder-text {
+    color: var(--color-text-muted);
+    margin: auto;
+    text-align: center;
+}
+
+.suggestions-output.thinking .placeholder-text {
+    color: var(--neon-primary);
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+}
+
+.suggestion-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.suggestion-item strong {
+    font-family: var(--font-display);
+    color: var(--neon-secondary);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.suggestion-item code {
+    background-color: rgba(57, 255, 20, 0.1);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--neon-primary);
+}
+
+.optimizer-action {
+    text-align: center;
+    margin-top: 40px;
 }
