@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herramientas de IA GlyphCode</title>
-    <meta name="description" content="Colección de herramientas de IA para desarrolladores, incluyendo optimizadores de código, detectores de anomalías y más.">
+    <title>Herramientas de IA /// GlyphCode</title>
+    <meta name="description" content="Catálogo de herramientas de Inteligencia Artificial desarrolladas por GlyphCode.">
+    <meta name="author" content="Omar">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- El resto de tu head aquí si es necesario -->
 </head>
 <body>
 
-    <<header class="main-header" id="main-header">
+    <!-- Header estándar de GlyphCode -->
+    <header class="main-header" id="main-header">
         <div class="container header-container">
             <a href="/index.html" class="logo-link" aria-label="GlyphCode Home">
                 <svg class="logo-svg" width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" class="logo-text">GlyphCode</text></svg>
@@ -19,8 +23,13 @@
             <div class="header-right">
                 <nav class="main-nav" id="main-nav">
                     <a href="/index.html">Inicio</a>
-                    <a href="/herramientas.html">Herramientas IA</a>
-                    <a href="/blog.html">Blog</a>
+                    <a href="/herramientas.html" class="active">Herramientas IA</a> <!-- 'active' si estás en esta página -->
+                    <div class="nav-item">
+                        <a href="/blog.html">Blog</a>
+                        <ul class="dropdown" id="blog-dropdown-menu">
+                            <!-- Las categorías se generarán aquí por JS -->
+                        </ul>
+                    </div>
                     <a href="/sobre-mi.html">Sobre Mí</a>
                     <a href="/contacto.html">Contacto</a>
                 </nav>
@@ -37,35 +46,42 @@
         <section class="page-content">
             <div class="container">
                 <h1 class="page-title">Arsenal de Herramientas IA</h1>
-                <p class="page-subtitle">Utilidades inteligentes diseñadas para potenciar tu flujo de trabajo como desarrollador.</p>
+                <p class="page-subtitle">Utilidades inteligentes diseñadas para potenciar tu flujo de trabajo.</p>
 
-                <!-- Usamos la misma rejilla que en la home -->
+                <!-- Usamos la misma clase de rejilla que en index.html para consistencia -->
                 <div class="creations-grid">
 
-                    <!-- Herramienta #1: Code-Optimizer Alpha -->
+                    <!-- Tarjeta 1: Generador de Contenido IA -->
+                    <div class="creation-card">
+                        <div class="creation-icon">✍️</div> <!-- Puedes usar el mismo ícono que en el dashboard -->
+                        <h3>Generador de Contenido IA</h3>
+                        <p>Accede al panel avanzado para crear artículos, posts de blog, ideas y más, utilizando modelos Gemini.</p>
+                        <!-- Enlace al DASHBOARD ESPECÍFICO de esta herramienta -->
+                        <a href="/dashboard-ia.html" class="btn btn-secondary">Ir al Generador →</a>
+                    </div>
+
+                    <!-- Tarjeta 2: Optimizador de código Alfa -->
                     <div class="creation-card">
                         <div class="creation-icon">🧠</div>
                         <h3>Optimizador de código Alfa</h3>
                         <p>Analiza tu código Python y sugiere refactorizaciones para mejorar su rendimiento y hacerlo más legible.</p>
-                        <!-- Este enlace SÍ funciona y lleva a la herramienta -->
                         <a href="/code-optimizer.html" class="btn btn-secondary">Usar Herramienta →</a>
                     </div>
 
-                    <!-- Herramienta #2: Log Anomaly Detector -->
+                    <!-- Tarjeta 3: Log Anomaly Detector -->
                     <div class="creation-card">
                         <div class="creation-icon">📈</div>
-                        <h3>Log Anomaly Detector</h3>
+                        <h3>Detector de anomalías de registro</h3>
                         <p>Sistema que vigila los logs de servidor y utiliza machine learning para detectar anomalías en tiempo real.</p>
-                        <!-- Este enlace es un placeholder por ahora -->
                         <a href="#" class="btn btn-secondary">Próximamente →</a>
                     </div>
-
-                    <!-- Herramienta #3: Docu-Writer AI -->
+                    
+                    <!-- Tarjeta 4: Humanizador / Parafraseador (Ejemplo de futura herramienta) -->
                     <div class="creation-card">
-                        <div class="creation-icon">💬</div>
-                        <h3>Docu-Writer AI</h3>
-                        <p>Herramienta que utiliza un LLM para generar automáticamente documentación técnica para tu código.</p>
-                        <!-- Este enlace es un placeholder por ahora -->
+                        <div class="creation-icon" style="font-size: 2.2rem;">🗣️</div> <!-- Ejemplo de otro ícono -->
+                        <h3>Humanizador / Parafraseador</h3>
+                        <p>Reescribe tus textos para mejorar la naturalidad o parafrasear contenido existente (Próximamente).</p>
+                         <!-- Cuando esté lista, enlazará a su propio dashboard, ej: /humanizador-dashboard.html -->
                         <a href="#" class="btn btn-secondary">Próximamente →</a>
                     </div>
 
@@ -74,7 +90,8 @@
         </section>
     </main>
     
-        <footer class="main-footer">
+    <footer class="main-footer">
+        <!-- ... (tu footer estándar de GlyphCode) ... -->
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column"><h4 class="footer-title">GlyphCode</h4><p>Forjando herramientas para el futuro digital. Código, creatividad y cafeína.</p></div>
@@ -92,8 +109,8 @@
         </div>
     </footer>
 
-    <script src="/posts-data.js"></script>
-    <script src="/script.js"></script>
+    <script src="/posts-data.js"></script> <!-- Para el dropdown del blog en el header -->
+    <script src="/script.js"></script> <!-- Script general del sitio -->
 
 </body>
 </html>

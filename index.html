@@ -24,9 +24,8 @@
         <div class="header-right">
             <nav class="main-nav" id="main-nav">
                 <a href="/index.html">Inicio</a>
-                <!-- Enlace estandarizado a la página de herramientas -->
-                <a href="/herramientas.html">Herramientas IA</a>
-                <!-- Estructura CORRECTA del menú desplegable del blog -->
+                <!-- CORRECTO: Este enlace DEBE apuntar a herramientas.html (el catálogo) -->
+                <a href="/herramientas.html">Herramientas IA</a> 
                 <div class="nav-item">
                     <a href="/blog.html">Blog</a>
                     <ul class="dropdown" id="blog-dropdown-menu">
@@ -60,16 +59,18 @@
 
                 <div class="creation-card">
                     <div class="creation-icon">📈</div>
-                    <h3>Log Anomaly Detector</h3>
+                    <h3>Detector de anomalías de registro</h3>
                     <p>Este sistema vigila los logs de servidor como un halcón. Usa machine learning para detectar anomalías en tiempo real y avisarte de posibles fallos antes de que ocurran.</p>
-                    <a href="#" class="btn btn-secondary">Ver Demo →</a>
+                    <a href="#" class="btn btn-secondary">Ver Demo →</a> 
                 </div>
 
                 <div class="creation-card">
-                    <div class="creation-icon">💬</div>
-                    <h3>Docu-Writer AI</h3>
-                    <p>Herramienta que utiliza un LLM (Large Language Model) para generar automáticamente documentación técnica para funciones y clases de código, ahorrando horas de trabajo manual.</p>
-                    <a href="#" class="btn btn-secondary">Probar API →</a>
+                    <div class="creation-icon">✍️</div>
+                    <h3>Generador de Contenido IA</h3>
+                    <p>Crea texto original para artículos, ideas, resúmenes y más, utilizando los modelos Gemini 1.5 Flash y Pro de Google.</p>
+                    <!-- ***** CORRECCIÓN IMPORTANTE AQUÍ ***** -->
+                    <!-- Este enlace DEBE apuntar al dashboard específico de la herramienta -->
+                    <a href="/dashboard-ia.html" class="btn btn-secondary">Acceder al Generador →</a> 
                 </div>
 
             </div>
@@ -92,7 +93,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column"><h4 class="footer-title">GlyphCode</h4><p>Forjando herramientas para el futuro digital. Código, creatividad y cafeína.</p></div>
-                <div class="footer-column"><h4 class="footer-title">Navegación</h4><ul class="footer-links"><li><a href="/index.html">Inicio</a></li><li><a href="/herramientas.html">Herramientas IA</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/sobre-mi.html">Sobre Mí</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
+                <div class="footer-column"><h4 class="footer-title">Navegación</h4><ul class="footer-links"><li><a href="/index.html">Inicio</a></li>
+                <!-- CORRECTO: Este enlace DEBE apuntar a herramientas.html (el catálogo) -->
+                <li><a href="/herramientas.html">Herramientas IA</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/sobre-mi.html">Sobre Mí</a></li><li><a href="/contacto.html">Contacto</a></li></ul></div>
                 <div class="footer-column"><h4 class="footer-title">Conectar</h4><div class="footer-social"><a href="https://github.com/omar17101983" target="_blank" aria-label="GitHub">GitHub</a><a href="#" target="_blank" aria-label="Twitter">Twitter</a><a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a></div></div>
             </div>
             <div class="footer-bottom">
