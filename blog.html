@@ -6,6 +6,7 @@
     <title>Blog /// GlyphCode</title>
     <meta name="description" content="Análisis, papers y tutoriales desde la terminal. Explorando el futuro de la IA y el desarrollo de software.">
     <meta name="author" content="Omar">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
@@ -21,10 +22,15 @@
         <div class="header-right">
             <nav class="main-nav" id="main-nav">
                 <a href="/index.html">Inicio</a>
-                <!-- Apunta a la nueva página de herramientas -->
+                <!-- Enlace estandarizado a la página de herramientas -->
                 <a href="/herramientas.html">Herramientas IA</a>
-                <!-- El blog vuelve a ser un enlace simple -->
-                <a href="/blog.html">Blog</a>
+                <!-- Estructura CORRECTA del menú desplegable del blog -->
+                <div class="nav-item">
+                    <a href="/blog.html">Blog</a>
+                    <ul class="dropdown" id="blog-dropdown-menu">
+                        <!-- Las categorías se generarán aquí por JS -->
+                    </ul>
+                </div>
                 <a href="/sobre-mi.html">Sobre Mí</a>
                 <a href="/contacto.html">Contacto</a>
             </nav>

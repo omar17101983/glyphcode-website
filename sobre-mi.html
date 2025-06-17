@@ -6,6 +6,7 @@
     <title>Sobre el Arquitecto de IA /// GlyphCode</title>
     <meta name="description" content="Conoce a Omar, el creador detrás de GlyphCode, y su pasión por el desarrollo de software y la inteligencia artificial.">
     <meta name="author" content="Omar">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -22,10 +23,15 @@
         <div class="header-right">
             <nav class="main-nav" id="main-nav">
                 <a href="/index.html">Inicio</a>
-                <!-- Apunta a la nueva página de herramientas -->
+                <!-- Enlace estandarizado a la página de herramientas -->
                 <a href="/herramientas.html">Herramientas IA</a>
-                <!-- El blog vuelve a ser un enlace simple -->
-                <a href="/blog.html">Blog</a>
+                <!-- Estructura CORRECTA del menú desplegable del blog -->
+                <div class="nav-item">
+                    <a href="/blog.html">Blog</a>
+                    <ul class="dropdown" id="blog-dropdown-menu">
+                        <!-- Las categorías se generarán aquí por JS -->
+                    </ul>
+                </div>
                 <a href="/sobre-mi.html">Sobre Mí</a>
                 <a href="/contacto.html">Contacto</a>
             </nav>
