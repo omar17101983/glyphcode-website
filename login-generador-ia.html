@@ -1,0 +1,101 @@
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // === ELEMENTOS DEL DOM ===
+    const modal = document.getElementById('auth-modal');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modalCloseBtn = document.getElementById('modal-close');
+    const modalTitle = document.getElementById('modal-title');
+    const modalForm = document.getElementById('modal-form');
+    const modalSubmitBtn = document.getElementById('modal-submit-btn');
+    const emailInput = document.getElementById('modal-email');
+    const passwordInput = document.getElementById('modal-password');
+
+    const loginHeaderBtn = document.getElementById('login-btn');
+    const signupHeaderBtn = document.getElementById('signup-btn');
+    const signupPlanBtns = document.querySelectorAll('.signup-btn-from-plan');
+
+    let currentMode = 'signup'; // Para saber si estamos en 'login' o 'signup'
+
+    // === FUNCIONES DEL MODAL ===
+    const openModal = (mode) => {
+        currentMode = mode;
+        if (mode === 'login') {
+            modalTitle.textContent = 'Acceder a tu Cuenta';
+            modalSubmitBtn.textContent = 'Acceder';
+        } else { // 'signup'
+            modalTitle.textContent = 'Crear Cuenta Nueva';
+            modalSubmitBtn.textContent = 'Registrarse';
+        }
+        modal.classList.remove('hidden');
+    };
+
+    const closeModal = () => {
+        modal.classList.add('hidden');
+    };
+
+    // === GESTIÓN DEL ENVÍO DEL FORMULARIO ===
+    modalForm.addEventListener('submit', async (event) => {
+        // Prevenimos que la página se recargue
+        event.preventDefault();
+
+        // Guardamos el texto original del botón y mostramos que está cargando
+        const originalButtonText = modalSubmitBtn.textContent;
+        modalSubmitBtn.textContent = 'Enviando...';
+        modalSubmitBtn.disabled = true;
+
+        // Si es un registro, enviamos el correo a nuestra API
+        if (currentMode === 'signup') {
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: emailInput.value,
+                        clave_acceso: passwordInput.value,
+                    }),
+                });
+
+                if (response.ok) {
+                    alert('¡Registro completado con éxito! Ahora puedes acceder.');
+                    closeModal();
+                } else {
+                    throw new Error('Hubo un problema con el registro.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al registrar. Por favor, inténtalo de nuevo.');
+            }
+        }
+        
+        // Si es un login, simplemente redirigimos (simulando un login exitoso)
+        if (currentMode === 'login') {
+            // Aquí en el futuro podrías verificar el login contra tu base de datos
+            // Por ahora, solo redirigimos para simularlo.
+            window.location.href = "/dashboard-ia.html";
+        }
+        
+        // Restauramos el botón a su estado original
+        modalSubmitBtn.textContent = originalButtonText;
+        modalSubmitBtn.disabled = false;
+    });
+
+    // === EVENT LISTENERS ===
+    loginHeaderBtn.addEventListener('click', () => openModal('login'));
+    signupHeaderBtn.addEventListener('click', () => openModal('signup'));
+    signupPlanBtns.forEach(btn => btn.addEventListener('click', () => openModal('signup')));
+    
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (event) => {
+        if (event.target === modalOverlay) {
+            closeModal();
+        }
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+});
+</script>
