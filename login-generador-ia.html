@@ -1,3 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contenido IA /// GlyphCode</title>
+    <meta name="description" content="Accede a la suite de herramientas del Generador de Contenido IA. Potencia tu creación de contenido con inteligencia artificial.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="login-page-header">
+    <div class="container login-header-container">
+        <a href="/index.html" class="logo-link" aria-label="GlyphCode Home">
+            <svg class="logo-svg" width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" class="logo-text">GlyphCode</text></svg>
+        </a>
+        
+        <div class="header-actions-buttons">
+            <button id="login-btn" class="btn-secondary-transparent">Acceder</button>
+            <button id="signup-btn" class="btn btn-primary">Registrarse Gratis</button>
+        </div>
+    </div>
+</header>
+
+<main class="landing-content">
+    <section class="container">
+        <h1 class="page-title">Generador de Contenido IA</h1>
+        <p class="page-subtitle">Desbloquea el poder de la inteligencia artificial para crear contenido único, optimizado y atractivo en segundos. Automatiza tu flujo de trabajo y lleva tu estrategia de contenido al siguiente nivel.</p>
+    </section>
+
+    <section class="feature-section container">
+        <h2 class="section-title"><span>//</span> Funcionalidades Clave</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-item-icon">✍️</div>
+                <h3>Redactor de Artículos</h3>
+                <p>Genera artículos completos y bien estructurados sobre cualquier tema. Ideal para blogs y contenido de formato largo.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-item-icon">💡</div>
+                <h3>Ideas de Títulos para Post</h3>
+                <p>Crea títulos magnéticos y optimizados para SEO que capturan la atención y aumentan los clics en tus artículos.</p>
+            </div>
+             <div class="feature-item">
+                <div class="feature-item-icon">🔍</div>
+                <h3>Metadescripción SEO</h3>
+                <p>Elabora metadescripciones persuasivas para tus páginas que mejoran tu ranking en los motores de búsqueda.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-item-icon">🔑</div>
+                <h3>Ideas de Palabras Clave</h3>
+                <p>Descubre palabras clave relevantes y de baja competencia para orientar tu contenido y dominar tu nicho.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-item-icon">📱</div>
+                <h3>Texto para Anuncios</h3>
+                <p>Genera copys de alto impacto para tus campañas en redes sociales (Facebook, Instagram, etc.) que impulsan la conversión.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-item-icon">🎬</div>
+                <h3>Guion de Video</h3>
+                <p>Estructura y escribe guiones de video (para YouTube, TikTok, Reels) que mantienen a tu audiencia enganchada hasta el final.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title"><span>//</span> Planes y Precios</h2>
+            <div class="pricing-table">
+                <div class="pricing-plan">
+                    <h3 class="plan-name">Plan Pro</h3>
+                    <div class="plan-price">$29 <span>/ mes</span></div>
+                    <ul class="plan-features">
+                        <li>100,000 Palabras/mes</li>
+                        <li>Acceso a todas las herramientas</li>
+                        <li>Generación de hasta 5 artículos a la vez</li>
+                        <li>Soporte por email prioritario</li>
+                        <li>Acceso a modelos estándar (Gemini 1.5 Flash)</li>
+                    </ul>
+                    <button class="btn btn-primary plan-button signup-btn-from-plan">Comenzar con Pro</button>
+                </div>
+                <div class="pricing-plan featured">
+                    <div class="featured-tag">Más Popular</div>
+                    <h3 class="plan-name">Plan Business</h3>
+                    <div class="plan-price">$79 <span>/ mes</span></div>
+                    <ul class="plan-features">
+                        <li>Palabras Ilimitadas</li>
+                        <li>Acceso a todas las herramientas</li>
+                        <li>Generación Masiva sin límites</li>
+                        <li>Acceso a modelos avanzados (Gemini 1.5 Pro)</li>
+                        <li>Soporte Dedicado y API (Próximamente)</li>
+                    </ul>
+                    <button class="btn btn-primary plan-button signup-btn-from-plan">Comenzar con Business</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2025 GlyphCode. Todos los derechos reservados.</p>
+            <nav class="footer-legal-nav">
+                <a href="/politica-privacidad.html">Política de Privacidad</a>
+                <a href="/politica-cookies.html">Política de Cookies</a>
+                <a href="/terminos-condiciones.html">Términos y Condiciones</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<div id="auth-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <button id="modal-close" class="modal-close">×</button>
+        <h2 id="modal-title"></h2>
+        
+        <form id="modal-form" class="contact-form">
+            <div class="form-group">
+                <label for="modal-email">Correo Electrónico:</label>
+                <input type="email" id="modal-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="modal-password">Contraseña:</label>
+                <input type="password" id="modal-password" name="clave_acceso" required>
+            </div>
+            <button type="submit" id="modal-submit-btn" class="btn btn-primary btn-full-width"></button>
+        </form>
+    </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // === ELEMENTOS DEL DOM ===
@@ -99,3 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+
+</body>
+</html>
