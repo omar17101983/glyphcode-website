@@ -1,0 +1,14 @@
+{
+  "name": "glyphcode-website",
+  "version": "1.0.0",
+  "description": "Formulario de contacto para GlyphCode",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omar",
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
+}
