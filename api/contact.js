@@ -2,7 +2,7 @@
 const nodemailer = require('nodemailer');
 
 // La función principal que se ejecutará cuando se llame a /api/contact
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   // Solo permitimos que esta función se llame con el método POST
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
