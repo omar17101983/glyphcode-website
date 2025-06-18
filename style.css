@@ -285,8 +285,8 @@ body.dashboard-body { background-color: var(--color-background); color: var(--co
 .sidebar-header { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--color-border); text-align: center; }
 .sidebar-header .logo-svg { height: 28px; width: auto; }
 .sidebar-header .logo-text { font-size: 26px; }
-.sidebar-nav-title { font-family: var(--font-display); color: var(--color-text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px; margin: 20px 0 10px 5px; }
 .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+.sidebar-nav-title { font-family: var(--font-display); color: var(--color-text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px; margin: 20px 0 10px 5px; }
 .sidebar-nav li a { display: flex; align-items: center; gap: 10px; padding: 10px 12px; color: var(--color-text-muted); font-weight: 500; font-size: 0.9rem; border-radius: 5px; margin-bottom: 4px; transition: background-color 0.2s ease, color 0.2s ease; }
 .sidebar-nav li a svg { stroke: var(--color-text-muted); width: 18px; height: 18px; transition: stroke 0.2s ease; flex-shrink: 0; }
 .sidebar-nav li a span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -299,7 +299,10 @@ body.dashboard-body { background-color: var(--color-background); color: var(--co
 .main-content-header { margin-bottom: 25px; display: flex; flex-direction: column; }
 .main-content-header h1 { font-family: var(--font-display); font-size: 2rem; color: var(--neon-primary); text-shadow: 0 0 6px rgba(var(--neon-primary-rgb), 0.4); margin: 0; }
 .main-content-header .page-subtitle { font-size: 1rem; margin: 5px 0 0 0; text-align: left; max-width: none; }
-.tool-interface-container { /* Contenedor para la UI de la herramienta y su documentación */ }
+
+/* Ocultar/Mostrar elementos por dispositivo */
+.mobile-footer { display: none; } /* Oculto en escritorio por defecto */
+.desktop-only { display: block; } /* Visible en escritorio por defecto */
 
 /* =============================================== */
 /* ===       ESTILOS TARJETAS DE HERRAMIENTAS    === */
@@ -315,22 +318,85 @@ body.dashboard-body { background-color: var(--color-background); color: var(--co
 
 
 /* --- RESPONSIVE GENERAL --- */
-@media (max-width: 991px) { /* Breakpoint para dashboard y header general */
-    /* --- Responsive Dashboard --- */
-    .dashboard-layout { flex-direction: column; height: auto; overflow: visible; }
-    body.dashboard-body { height: auto; display: block; }
-    .dashboard-sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--color-border); overflow-y: visible; padding: 15px; }
-    .sidebar-header { margin-bottom: 15px; padding-bottom: 10px; }
-    .sidebar-nav-title { margin: 15px 0 8px 0; text-align: center; }
-    .sidebar-nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
-    .sidebar-nav li { flex-basis: calc(50% - 10px); max-width: calc(50% - 10px); }
-    .sidebar-nav li a { padding: 8px 10px; font-size: 0.85rem; justify-content: center; }
+@media (max-width: 991px) {
+    
+    /* === ▼▼▼ DISEÑO RESPONSIVE PARA EL DASHBOARD (VERSIÓN DEFINITIVA) ▼▼▼ === */
+    .dashboard-layout { 
+        flex-direction: column; 
+        height: auto; 
+        overflow: visible; 
+    }
+    body.dashboard-body { 
+        height: auto; 
+        display: block; 
+    }
+    .dashboard-sidebar { 
+        width: 100%;
+        height: auto; 
+        border-right: none; 
+        border-bottom: 1px solid var(--color-border);
+        padding: 15px;
+        overflow: visible;
+    }
+    .sidebar-header { margin-bottom: 15px; }
+    
+    /* Ocultamos los grupos que no queremos en móvil */
+    .desktop-only { display: none; }
+    
+    /* Mostramos el footer de móvil */
+    .mobile-footer {
+        display: block;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--color-border);
+    }
+    .mobile-footer .sidebar-nav-group {
+        margin-bottom: 25px;
+    }
+    .mobile-footer .sidebar-footer {
+        margin-top: 25px;
+        padding-top: 15px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    /* Estilos para la navegación que SÍ se queda arriba */
+    .sidebar-nav-group ul {
+        display: flex;
+        overflow-x: auto;
+        list-style: none;
+        padding-bottom: 15px;
+        margin: 0 -15px; /* Para que el scroll llegue a los bordes */
+        padding-left: 15px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--neon-primary) transparent;
+    }
+    .sidebar-nav-group ul::-webkit-scrollbar { height: 5px; }
+    .sidebar-nav-group ul::-webkit-scrollbar-track { background: rgba(var(--neon-primary-rgb), 0.1); }
+    .sidebar-nav-group ul::-webkit-scrollbar-thumb { background-color: var(--neon-primary); border-radius: 10px; }
+
+    .sidebar-nav-title { margin: 0 0 10px 0; font-size: 0.8rem; }
+    
+    .sidebar-nav li { flex-shrink: 0; margin-right: 10px; }
+    
+    .sidebar-nav li a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        background-color: var(--color-background);
+        border: 1px solid var(--color-border);
+        border-radius: 20px;
+    }
     .sidebar-nav li a svg { width: 16px; height: 16px; }
-    .dashboard-main-content { padding: 15px; height: auto; overflow-y: visible; }
+
+    .dashboard-main-content { padding: 20px 15px; }
     .main-content-header h1 { font-size: 1.6rem; }
     .main-content-header .page-subtitle { font-size: 0.9rem; }
-    .generator-layout { grid-template-columns: 1fr; }
     .tool-cards-grid { grid-template-columns: 1fr; gap: 15px; }
+    /* === ▲▲▲ FIN DEL DISEÑO RESPONSIVE PARA EL DASHBOARD ▲▲▲ === */
 
     /* --- Responsive Header Principal (fuera del dashboard) --- */
     .main-header:not(.dashboard-header) .main-nav { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background-color: rgba(10, 10, 16, 0.95); backdrop-filter: blur(5px); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1); z-index: 100; }
@@ -346,7 +412,7 @@ body.dashboard-body { background-color: var(--color-background); color: var(--co
     .search-form:hover .search-input, .search-input:focus, .main-header.search-active .search-input { width: 100%; padding: 8px 12px; }
 }
 
-@media (max-width: 950px) { /* Breakpoint anterior para ajustes generales del sitio */
+@media (max-width: 950px) {
     .footer-grid { text-align: center; }
     .footer-social { align-items: center; }
     .footer-bottom { flex-direction: column; justify-content: center; }
@@ -360,8 +426,6 @@ body.dashboard-body { background-color: var(--color-background); color: var(--co
     .section-title { font-size: 2rem; }
     .subscribe-form input { min-width: 100%; }
     .post-full-title { font-size: 2.5rem; }
-    .dashboard-sidebar { padding: 10px; }
-    .sidebar-nav li { flex-basis: 100%; max-width: 100%; }
     .main-content-header h1 { font-size: 1.4rem; }
     .main-content-header .page-subtitle { font-size: 0.8rem; }
     .tool-card-content h3 { font-size: 1.1rem; }
