@@ -1,7 +1,7 @@
 {
   "name": "glyphcode-website",
   "version": "1.0.0",
-  "description": "Formulario de contacto para GlyphCode",
+  "description": "Herramientas IA y software por GlyphCode",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,11 @@
   "author": "Omar",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.15.0",
+    "bcryptjs": "^2.4.3",
     "nodemailer": "^6.9.14"
+  },
+  "devDependencies": {
+    "prisma": "^5.15.0"
   }
 }

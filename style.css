@@ -448,3 +448,39 @@ a {
         transform: scale(1);
     }
 }
+/* =============================================== */
+/* ===       ESTILOS DEL DASHBOARD IA            === */
+/* =============================================== */
+
+/* Por defecto (vista móvil), el pie de página móvil es visible y los extras del sidebar no */
+.mobile-footer {
+    display: block;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+
+.sidebar-nav-group.desktop-only,
+.sidebar-footer.desktop-only {
+    display: none;
+}
+
+/* Cuando la pantalla es suficientemente grande (vista de escritorio)... */
+@media (min-width: 992px) {
+    /* Ocultamos el pie de página móvil */
+    .mobile-footer {
+        display: none;
+    }
+
+    /* Y mostramos los elementos solo para escritorio */
+    .sidebar-nav-group.desktop-only,
+    .sidebar-footer.desktop-only {
+        display: block;
+    }
+}
+
+/* El resto de los estilos del dashboard (los tienes en style.css, esto es solo un ejemplo de donde irían) */
+.dashboard-body { background: var(--color-surface); }
+.dashboard-layout { display: flex; min-height: 100vh; }
+.dashboard-sidebar { /* tus estilos existentes */ }
+.dashboard-main-content { /* tus estilos existentes */ }

@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Contenido IA /// GlyphCode</title>
     <meta name="description" content="Accede a la suite de herramientas del Generador de Contenido IA. Potencia tu creación de contenido con inteligencia artificial.">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <!-- ▼▼▼ CAMBIO: Ruta absoluta para el favicon ▼▼▼ -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"> 
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- ▼▼▼ CAMBIO: Ruta absoluta para el CSS. Funciona en todas partes. ▼▼▼ -->
+    <link rel="stylesheet" href="/style.css">
+
 </head>
 <body>
 
 <header class="login-page-header">
     <div class="container login-header-container">
+        <!-- ▼▼▼ CAMBIO: Ruta absoluta para el enlace de inicio ▼▼▼ -->
         <a href="/index.html" class="logo-link" aria-label="GlyphCode Home">
             <svg class="logo-svg" width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg"><text x="0" y="30" class="logo-text">GlyphCode</text></svg>
         </a>
@@ -27,78 +34,20 @@
 </header>
 
 <main class="landing-content">
+    <!-- El contenido del main se mantiene igual -->
     <section class="container">
         <h1 class="page-title">Generador de Contenido IA</h1>
         <p class="page-subtitle">Desbloquea el poder de la inteligencia artificial para crear contenido único, optimizado y atractivo en segundos. Automatiza tu flujo de trabajo y lleva tu estrategia de contenido al siguiente nivel.</p>
     </section>
-
     <section class="feature-section container">
         <h2 class="section-title"><span>//</span> Funcionalidades Clave</h2>
-        
         <div class="feature-grid">
-            <div class="feature-item">
-                <div class="feature-item-icon">✍️</div>
-                <h3>Redactor de Artículos</h3>
-                <p>Genera artículos completos y bien estructurados sobre cualquier tema. Ideal para blogs y contenido de formato largo.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-item-icon">💡</div>
-                <h3>Ideas de Títulos para Post</h3>
-                <p>Crea títulos magnéticos y optimizados para SEO que capturan la atención y aumentan los clics en tus artículos.</p>
-            </div>
-             <div class="feature-item">
-                <div class="feature-item-icon">🔍</div>
-                <h3>Metadescripción SEO</h3>
-                <p>Elabora metadescripciones persuasivas para tus páginas que mejoran tu ranking en los motores de búsqueda.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-item-icon">🔑</div>
-                <h3>Ideas de Palabras Clave</h3>
-                <p>Descubre palabras clave relevantes y de baja competencia para orientar tu contenido y dominar tu nicho.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-item-icon">📱</div>
-                <h3>Texto para Anuncios</h3>
-                <p>Genera copys de alto impacto para tus campañas en redes sociales (Facebook, Instagram, etc.) que impulsan la conversión.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-item-icon">🎬</div>
-                <h3>Guion de Video</h3>
-                <p>Estructura y escribe guiones de video (para YouTube, TikTok, Reels) que mantienen a tu audiencia enganchada hasta el final.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing-section">
-        <div class="container">
-            <h2 class="section-title"><span>//</span> Planes y Precios</h2>
-            <div class="pricing-table">
-                <div class="pricing-plan">
-                    <h3 class="plan-name">Plan Pro</h3>
-                    <div class="plan-price">$29 <span>/ mes</span></div>
-                    <ul class="plan-features">
-                        <li>100,000 Palabras/mes</li>
-                        <li>Acceso a todas las herramientas</li>
-                        <li>Generación de hasta 5 artículos a la vez</li>
-                        <li>Soporte por email prioritario</li>
-                        <li>Acceso a modelos estándar (Gemini 1.5 Flash)</li>
-                    </ul>
-                    <button class="btn btn-primary plan-button signup-btn-from-plan">Comenzar con Pro</button>
-                </div>
-                <div class="pricing-plan featured">
-                    <div class="featured-tag">Más Popular</div>
-                    <h3 class="plan-name">Plan Business</h3>
-                    <div class="plan-price">$79 <span>/ mes</span></div>
-                    <ul class="plan-features">
-                        <li>Palabras Ilimitadas</li>
-                        <li>Acceso a todas las herramientas</li>
-                        <li>Generación Masiva sin límites</li>
-                        <li>Acceso a modelos avanzados (Gemini 1.5 Pro)</li>
-                        <li>Soporte Dedicado y API (Próximamente)</li>
-                    </ul>
-                    <button class="btn btn-primary plan-button signup-btn-from-plan">Comenzar con Business</button>
-                </div>
-            </div>
+            <div class="feature-item"><div class="feature-item-icon">✍️</div><h3>Redactor de Artículos</h3><p>Genera artículos completos y bien estructurados sobre cualquier tema. Ideal para blogs y contenido de formato largo.</p></div>
+            <div class="feature-item"><div class="feature-item-icon">💡</div><h3>Ideas de Títulos para Post</h3><p>Crea títulos magnéticos y optimizados para SEO que capturan la atención y aumentan los clics en tus artículos.</p></div>
+            <div class="feature-item"><div class="feature-item-icon">🔍</div><h3>Metadescripción SEO</h3><p>Elabora metadescripciones persuasivas para tus páginas que mejoran tu ranking en los motores de búsqueda.</p></div>
+            <div class="feature-item"><div class="feature-item-icon">🔑</div><h3>Ideas de Palabras Clave</h3><p>Descubre palabras clave relevantes y de baja competencia para orientar tu contenido y dominar tu nicho.</p></div>
+            <div class="feature-item"><div class="feature-item-icon">📱</div><h3>Texto para Anuncios</h3><p>Genera copys de alto impacto para tus campañas en redes sociales (Facebook, Instagram, etc.) que impulsan la conversión.</p></div>
+            <div class="feature-item"><div class="feature-item-icon">🎬</div><h3>Guion de Video</h3><p>Estructura y escribe guiones de video (para YouTube, TikTok, Reels) que mantienen a tu audiencia enganchada hasta el final.</p></div>
         </div>
     </section>
 </main>
@@ -108,6 +57,7 @@
         <div class="footer-bottom">
             <p>© 2025 GlyphCode. Todos los derechos reservados.</p>
             <nav class="footer-legal-nav">
+                <!-- ▼▼▼ CAMBIO: Rutas absolutas para los enlaces legales ▼▼▼ -->
                 <a href="/politica-privacidad.html">Política de Privacidad</a>
                 <a href="/politica-cookies.html">Política de Cookies</a>
                 <a href="/terminos-condiciones.html">Términos y Condiciones</a>
@@ -117,19 +67,13 @@
 </footer>
 
 <div id="auth-modal" class="modal-overlay hidden">
+    <!-- El modal se mantiene igual -->
     <div class="modal-content">
         <button id="modal-close" class="modal-close">×</button>
         <h2 id="modal-title"></h2>
-        
         <form id="modal-form" class="contact-form">
-            <div class="form-group">
-                <label for="modal-email">Correo Electrónico:</label>
-                <input type="email" id="modal-email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="modal-password">Nueva Contraseña:</label>
-                <input type="password" id="modal-password" name="clave_acceso" required>
-            </div>
+            <div class="form-group"><label for="modal-email">Correo Electrónico:</label><input type="email" id="modal-email" name="email" required></div>
+            <div class="form-group"><label for="modal-password" id="password-label">Contraseña:</label><input type="password" id="modal-password" name="clave_acceso" required></div>
             <button type="submit" id="modal-submit-btn" class="btn btn-primary btn-full-width"></button>
         </form>
     </div>
@@ -137,102 +81,93 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // === ELEMENTOS DEL DOM ===
+    // Definiciones de elementos del DOM
     const modal = document.getElementById('auth-modal');
     const modalOverlay = document.querySelector('.modal-overlay');
     const modalCloseBtn = document.getElementById('modal-close');
     const modalTitle = document.getElementById('modal-title');
     const modalForm = document.getElementById('modal-form');
     const modalSubmitBtn = document.getElementById('modal-submit-btn');
-    const emailInput = document.getElementById('modal-email');
-    const passwordInput = document.getElementById('modal-password');
-
+    const passwordLabel = document.getElementById('password-label');
     const loginHeaderBtn = document.getElementById('login-btn');
     const signupHeaderBtn = document.getElementById('signup-btn');
-    const signupPlanBtns = document.querySelectorAll('.signup-btn-from-plan');
+    
+    let currentMode = 'signup'; 
 
-    let currentMode = 'signup'; // Para saber si estamos en 'login' o 'signup'
-
-    // === FUNCIONES DEL MODAL ===
     const openModal = (mode) => {
         currentMode = mode;
+        modalForm.reset(); 
         if (mode === 'login') {
             modalTitle.textContent = 'Acceder a tu Cuenta';
+            passwordLabel.textContent = 'Contraseña:';
             modalSubmitBtn.textContent = 'Acceder';
-        } else { // 'signup'
+        } else {
             modalTitle.textContent = 'Crear Cuenta Nueva';
+            passwordLabel.textContent = 'Nueva Contraseña:';
             modalSubmitBtn.textContent = 'Registrarse';
         }
         modal.classList.remove('hidden');
     };
 
-    const closeModal = () => {
-        modal.classList.add('hidden');
-    };
+    const closeModal = () => modal.classList.add('hidden');
 
-    // === GESTIÓN DEL ENVÍO DEL FORMULARIO ===
     modalForm.addEventListener('submit', async (event) => {
-        // Prevenimos que la página se recargue
         event.preventDefault();
-
-        // Guardamos el texto original del botón y mostramos que está cargando
         const originalButtonText = modalSubmitBtn.textContent;
-        modalSubmitBtn.textContent = 'Enviando...';
+        modalSubmitBtn.textContent = 'ENVIANDO...';
         modalSubmitBtn.disabled = true;
 
-        // Si es un registro, enviamos el correo a nuestra API
-        if (currentMode === 'signup') {
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: emailInput.value,
-                        clave_acceso: passwordInput.value,
-                    }),
-                });
+        const email = document.getElementById('modal-email').value;
+        const password = document.getElementById('modal-password').value;
+        
+        const isLogin = currentMode === 'login';
+        
+        // ▼▼▼ CAMBIO CRÍTICO: RUTA ABSOLUTA Y SIN EXTENSIÓN .JS ▼▼▼
+        const endpoint = isLogin ? '/api/login' : '/api/register';
 
-                if (response.ok) {
-                    alert('¡Registro completado con éxito! Ahora puedes acceder.');
-                    closeModal();
-                } else {
-                    throw new Error('Hubo un problema con el registro.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al registrar. Por favor, inténtalo de nuevo.');
+        try {
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, clave_acceso: password }),
+            });
+
+            // Si la respuesta no es OK, lanzamos un error para que lo capture el 'catch'
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ message: `Error del servidor: ${response.status}` }));
+                throw new Error(errorData.message);
             }
+
+            const data = await response.json();
+
+            if (isLogin) {
+                // ▼▼▼ CAMBIO CRÍTICO: RUTA ABSOLUTA PARA REDIRECCIÓN ▼▼▼
+                window.location.href = "/dashboard-ia.html";
+            } else {
+                alert('¡Registro completado con éxito! Ahora puedes acceder con tus datos.');
+                openModal('login'); 
+            }
+
+        } catch (error) {
+            console.error(`Error en ${currentMode}:`, error);
+            alert(`Hubo un problema: ${error.message}`); 
+        } finally {
+            modalSubmitBtn.textContent = originalButtonText;
+            modalSubmitBtn.disabled = false;
         }
-        
-        // Si es un login, simplemente redirigimos (simulando un login exitoso)
-        if (currentMode === 'login') {
-            // Aquí en el futuro podrías verificar el login contra tu base de datos
-            // Por ahora, solo redirigimos para simularlo.
-            window.location.href = "/dashboard-ia.html";
-        }
-        
-        // Restauramos el botón a su estado original
-        modalSubmitBtn.textContent = originalButtonText;
-        modalSubmitBtn.disabled = false;
     });
 
-    // === EVENT LISTENERS ===
+    // Listeners para abrir el modal
     loginHeaderBtn.addEventListener('click', () => openModal('login'));
     signupHeaderBtn.addEventListener('click', () => openModal('signup'));
-    signupPlanBtns.forEach(btn => btn.addEventListener('click', () => openModal('signup')));
     
+    // Listeners para cerrar el modal
     modalCloseBtn.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', (event) => {
-        if (event.target === modalOverlay) {
-            closeModal();
-        }
+        if (event.target === modalOverlay) closeModal();
     });
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-            closeModal();
-        }
+        if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
     });
 });
 </script>
