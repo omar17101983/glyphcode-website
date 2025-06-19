@@ -1,3 +1,5 @@
+// api/login.js (VERSIÓN CORREGIDA)
+
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 
@@ -15,23 +17,23 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 1. Buscamos al usuario por su email
     const user = await prisma.user.findUnique({ where: { email } });
+
     if (!user) {
-      // Si el usuario no existe, devolvemos el mismo error para no dar pistas
       return res.status(401).json({ message: 'Credenciales inválidas.' });
     }
 
-    // 2. Comparamos la contraseña que nos envían con la que tenemos cifrada en la BD
-    const passwordIsValid = await bcrypt.compare(clave_acceso, user.passwordHash);
+    // Comparamos con el campo 'password'
+    const passwordIsValid = await bcrypt.compare(clave_acceso, user.password);
+    
     if (!passwordIsValid) {
-      // Si las contraseñas no coinciden
       return res.status(401).json({ message: 'Credenciales inválidas.' });
     }
 
-    // 3. ¡Login exitoso!
-    // (En la Etapa 2, aquí es donde generaríamos el token JWT)
-    return res.status(200).json({ message: 'Login exitoso.' });
+    return res.status(200).json({ 
+        message: "Acceso concedido", 
+        userId: user.id
+    });
 
   } catch (error) {
     console.error("Error en el login:", error);
