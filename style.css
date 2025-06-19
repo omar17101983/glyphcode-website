@@ -784,3 +784,94 @@ a {
         padding: 30px 20px;
     }
 }
+/* =============================================== */
+/* ===       ESTILOS DEL GENERADOR (v2)        === */
+/* =============================================== */
+
+/* Eliminar estilos del layout anterior */
+.generator-layout, .content-panel, .config-panel {
+    display: none; /* O puedes borrar estas clases del CSS */
+}
+
+/* Nuevas secciones principales */
+.generator-section {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+}
+
+.generator-section-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--neon-secondary);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Cuadrículas de configuración */
+.config-grid-3col, .config-grid-2col {
+    display: grid;
+    gap: 20px 30px;
+}
+
+.config-grid-3col {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.config-grid-2col {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Ajustes para el grupo de radio de Tamaño */
+.radio-group-horizontal {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 100%;
+    padding-top: 5px; /* Alineación vertical con otros campos */
+}
+.radio-group-horizontal label {
+    font-weight: 400;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* Estilos para la sección de Estructura del Esquema */
+.outline-structure-group {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(var(--neon-primary-rgb), 0.1);
+}
+
+h4.config-panel-subtitle {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.structure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px 30px;
+}
+
+.structure-grid .form-group {
+    margin-bottom: 0;
+}
+
+.structure-grid .toggle-group {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: var(--color-surface); /* Fondo ligeramente diferente para los toggles */
+    border: 1px solid var(--color-border);
+}
+
+.structure-grid .toggle-group label {
+    font-size: 0.85rem;
+}
