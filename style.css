@@ -315,30 +315,86 @@ a {
 /* Contenido de la página de aterrizaje */
 .landing-content { padding: 80px 0 0; }
 .feature-section { padding: 80px 0; }
-.feature-grid {
+/* ========================================================== */
+/* === ESTILOS LANDING PAGE (V3 - TARJETAS FUTURISTAS)      === */
+/* ========================================================== */
+
+/* Contenedor principal de la sección de características */
+.features-futuristic-section {
+    padding: 80px 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.features-futuristic-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
 }
-.feature-item {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+
+/* El diseño de la tarjeta futurista */
+.futuristic-card {
+    background: linear-gradient(145deg, rgba(36, 36, 50, 0.4), rgba(20, 20, 30, 0.6));
+    border: 1px solid rgba(var(--neon-primary-rgb), 0.15);
+    border-radius: 12px;
     padding: 30px;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px); /* Efecto cristal esmerilado */
 }
-.feature-item-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    line-height: 1;
+
+/* Efecto de hover */
+.futuristic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(var(--neon-primary-rgb), 0.1);
+    border-color: rgba(var(--neon-primary-rgb), 0.4);
 }
-.feature-item h3 {
+
+/* Círculo decorativo en el fondo */
+.futuristic-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(var(--neon-primary-rgb), 0.1) 0%, rgba(var(--neon-primary-rgb), 0) 70%);
+    transition: transform 0.5s ease;
+    z-index: -1;
+}
+
+.futuristic-card:hover::before {
+    transform: scale(1.2);
+}
+
+/* Contenedor del icono */
+.card-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 25px;
+    background-color: rgba(var(--neon-primary-rgb), 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(var(--neon-primary-rgb), 0.2);
+}
+
+.card-icon-wrapper svg {
+    color: var(--neon-primary);
+}
+
+/* Estilos para el texto dentro de la tarjeta */
+.futuristic-card h3 {
     font-family: var(--font-display);
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
     color: var(--color-text);
+    margin-bottom: 15px;
 }
-.feature-item p {
+
+.futuristic-card p {
     color: var(--color-text-muted);
+    line-height: 1.7;
     font-size: 0.95rem;
 }
 
@@ -1020,4 +1076,321 @@ h4.config-panel-subtitle {
     .landing-title { font-size: 2.8rem; }
     .landing-subtitle { font-size: 2rem; }
     .testimonial-section blockquote { font-size: 1.4rem; }
+}
+/* =============================================== */
+/* ===    ESTILOS LANDING PAGE (VERSIÓN PRO)     === */
+/* =============================================== */
+
+.header-actions-buttons .nav-link {
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-weight: 700;
+    transition: color 0.3s;
+}
+.header-actions-buttons .nav-link:hover {
+    color: var(--color-text);
+}
+
+.highlight-text {
+    color: var(--neon-primary);
+}
+
+/* --- Arreglo para las tarjetas de características --- */
+.feature-item-expanded {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 30px 25px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-item-expanded:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(var(--neon-primary-rgb), 0.1);
+}
+.feature-icon-expanded {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: rgba(var(--neon-primary-rgb), 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.feature-icon-expanded svg {
+    width: 30px;
+    height: 30px;
+    stroke: var(--neon-primary);
+    stroke-width: 2;
+}
+.feature-item-expanded h3 {
+    font-family: var(--font-display);
+    color: var(--color-text);
+    font-size: 1.5rem; /* Aumentamos el tamaño para más impacto */
+    margin-bottom: 10px;
+}
+.feature-item-expanded p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* --- Arreglo para el espaciado de la sección final --- */
+.final-cta-section {
+    padding: 80px 20px;
+    margin-top: 80px; /* <-- ¡AQUÍ ESTÁ EL ESPACIO AÑADIDO! */
+    text-align: center;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+}
+
+/* El resto de estilos de .final-cta-section se quedan igual */
+.final-cta-section h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--neon-primary);
+    margin-bottom: 10px;
+}
+.final-cta-section p {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+}
+/* Sección "Cómo Funciona" */
+.how-it-works-section {
+    padding: 80px 0;
+    background-color: var(--color-surface);
+}
+.how-it-works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+    position: relative;
+}
+.how-step {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    border-radius: 8px;
+}
+.step-number {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background-color: var(--neon-primary);
+    color: var(--color-background);
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+    box-shadow: var(--neon-glow-primary);
+}
+.how-step h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Sección FAQ */
+/* =============================================== */
+/* ===         ESTILOS FAQ ACORDEÓN              === */
+/* =============================================== */
+
+/* Elimina la regla .faq-grid anterior si la tienes */
+.faq-grid { display: none; }
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 60px auto 0;
+}
+
+.faq-item-accordion {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    
+    /* Estilos del texto de la pregunta */
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-text);
+    transition: color 0.3s;
+}
+
+.faq-question:hover {
+    color: var(--neon-primary);
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Evita que el icono se encoja */
+    margin-left: 15px;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    color: var(--color-text-muted);
+}
+.faq-answer p {
+    padding-bottom: 20px;
+}
+
+/* Estado activo cuando se despliega */
+.faq-item-accordion.active .faq-question {
+    color: var(--neon-primary);
+}
+.faq-item-accordion.active .faq-icon {
+    transform: rotate(180deg);
+}
+.faq-item-accordion.active .faq-answer {
+    /* Un valor alto para asegurar que quepa cualquier contenido */
+    max-height: 300px; 
+}
+
+/* Ajustes Responsive Adicionales */
+@media (max-width: 991px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ========================================================== */
+/* ===         ESTILOS HEADER LANDING PAGE                === */
+/* ========================================================== */
+html {
+    scroll-padding-top: 80px; /* Evita que el header fijo tape los títulos al saltar con anclas */
+    scroll-behavior: smooth;
+}
+
+.landing-header {
+    background-color: rgba(10, 10, 16, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.landing-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landing-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.landing-nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.landing-nav-menu a {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.landing-nav-menu a:hover {
+    color: var(--color-text);
+}
+
+.landing-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.landing-nav-actions .btn-secondary-transparent {
+    font-size: 1rem;
+    font-weight: 700;
+}
+.landing-nav-actions .btn-primary {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+}
+
+.hamburger-button {
+    display: none; /* Oculto en escritorio */
+    z-index: 1001;
+}
+
+/* --- Responsive para el Header de la Landing --- */
+@media (max-width: 991px) {
+    .landing-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(10, 10, 16, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .landing-nav.nav-active {
+        right: 0;
+    }
+
+    .landing-nav-menu {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .landing-nav-menu a {
+        font-size: 1.8rem;
+    }
+
+    .landing-nav-actions {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .landing-nav-actions .btn-primary {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+
+    .hamburger-button {
+        display: block;
+    }
+}
+.nav-action-link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.nav-action-link:hover {
+    color: var(--color-text);
 }
