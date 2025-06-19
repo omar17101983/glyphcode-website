@@ -671,11 +671,12 @@ a {
 /* --- TARJETAS DE HERRAMIENTAS --- */
 .tool-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
 }
+
 .tool-card {
-    display: flex; /* Cambiado para alinear icono y contenido */
+    display: flex;
     align-items: flex-start;
     gap: 20px;
     background-color: var(--color-background);
@@ -684,12 +685,15 @@ a {
     border-radius: 8px;
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     text-decoration: none;
+    color: inherit; /* Hereda el color del texto para que los párrafos no sean verdes */
 }
+
 .tool-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     border-color: var(--neon-primary);
 }
+
 .tool-card-icon {
     width: 60px;
     height: 60px;
@@ -697,40 +701,53 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0; /* Evita que el icono se encoja */
+    flex-shrink: 0;
 }
-.tool-card-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-.tool-card-content h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--color-text);
-    margin: 0 0 10px 0;
-}
-.tool-card-content p {
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    flex-grow: 1; /* Empuja el CTA hacia abajo */
-    margin: 0;
-}
-.tool-card-cta {
-    margin-top: 15px;
-    color: var(--neon-primary);
-    font-weight: 700;
-}
+
 .tool-card-icon.emoji-icon {
     font-size: 2rem;
     line-height: 1;
 }
 
-/* Estilo para tarjetas deshabilitadas (Próximamente) */
-.tool-card.disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
+.tool-card-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* NUEVO: Contenedor para el título y el CTA */
+.tool-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.tool-card-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.tool-card-content p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* NUEVO: Estilos para el texto "Acceder" y "Próximamente" */
+.tool-card-cta {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--neon-primary); /* Color verde por defecto */
+    flex-shrink: 0; /* Evita que el texto se comprima */
+}
+
+.tool-card-cta.cta-disabled {
+    color: #f5a623; /* Un color ámbar/amarillo para "Próximamente" */
 }
 .tool-card.disabled:hover {
     transform: none; /* Quitamos el efecto de levantar */
