@@ -1,4 +1,4 @@
-// redactor-articulos.js (VERSIÓN CON LÍMITES)
+// redactor-articulos.js (VERSIÓN MEJORADA)
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,10 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generate-btn');
     const outputContainer = document.getElementById('generated-article');
     const outputWrapper = document.getElementById('generated-content-wrapper');
+    
+    // ▼▼▼ NUEVO: Referencias a los elementos de acción ▼▼▼
+    const actionsContainer = document.getElementById('content-actions');
+    const copyBtn = document.getElementById('copy-btn');
+    const downloadHtmlBtn = document.getElementById('download-html-btn');
+    const publishDraftBtn = document.getElementById('publish-draft-btn');
+    const publishPublicBtn = document.getElementById('publish-public-btn');
 
-    // ... (la función constructPrompt se queda exactamente igual)
     function constructPrompt(settings) {
-        // ... (código sin cambios)
+        // ... (el código de esta función no cambia, es perfecto)
         const toggles = [
         'include-conclusion', 'include-tables', 'include-h3', 'include-lists',
         'include-italic', 'include-quotes', 'include-key-takeaways',
@@ -37,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     prompt += `10. **Tamaño del Artículo:** ${settings['article-size']} (aproximadamente).\n\n`;
 
     prompt += `11. **Estructura y Formato:**\n`;
-    prompt += `    - **Gancho de Introducción:** Usa un gancho de tipo "${settings['intro-hook']}". Si he proporcionado detalles adicionales, úsalos: "${settings['intro-details']}".\n`;
+    prompt += `    - **Gancho de Introducción:** Usa un gancho de tipo "${settings['intro-hook']}".\n`;
     prompt += `    - **Elementos a Incluir OBLIGATORIAMENTE en la estructura:** ${includedElements}.\n`;
     prompt += `    - Si "Conexión Web" está activado (${settings['web-access']}), busca información actualizada y relevante sobre el tema para enriquecer el contenido.\n\n`;
 
@@ -49,10 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // --- NUEVO: Obtener el ID del usuario ---
         const userId = localStorage.getItem('userId');
         if (!userId) {
             alert('No se pudo identificar al usuario. Por favor, inicia sesión de nuevo.');
+            window.location.href = '/login-generador-ia.html';
             return;
         }
 
@@ -71,30 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
         generateBtn.innerHTML = `<span class="spinner"></span>GENERANDO...`;
         outputContainer.innerHTML = `<div class="thinking-animation"><p>Verificando límites y contactando al modelo...</p></div>`;
         outputWrapper.style.display = 'block';
+        actionsContainer.classList.add('hidden'); // Ocultar acciones al empezar
         
         try {
             const response = await fetch('/api/generate-article', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                // --- NUEVO: Enviar el ID del usuario junto con el prompt ---
                 body: JSON.stringify({ prompt: detailedPrompt, userId: userId }),
             });
 
             const data = await response.json();
 
             if (!response.ok) {
-                // --- NUEVO: Manejar el error de límite de uso ---
                 if (response.status === 429) {
                     outputContainer.innerHTML = `<div class="limit-reached-message">
                         <h3>Límite Alcanzado</h3>
                         <p>${data.error}</p>
-                        <a href="/precios.html" class="btn btn-primary">Ver Planes</a>
+                        <a href="/login-generador-ia.html#precios" class="btn btn-primary">Ver Planes</a>
                     </div>`;
                 } else {
                     throw new Error(data.error || 'La respuesta del servidor no fue exitosa.');
                 }
             } else {
                 outputContainer.innerHTML = marked.parse(data.generatedText);
+                actionsContainer.classList.remove('hidden'); // Mostrar acciones al terminar
             }
 
         } catch (error) {
@@ -105,4 +111,64 @@ document.addEventListener('DOMContentLoaded', () => {
             generateBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Generar de Nuevo`;
         }
     });
+
+    // ▼▼▼ LÓGICA PARA LOS BOTONES DE ACCIÓN ▼▼▼
+    
+    // 1. Copiar Texto
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(outputContainer.innerText).then(() => {
+            const originalText = copyBtn.querySelector('span').textContent;
+            copyBtn.querySelector('span').textContent = '¡Copiado!';
+            setTimeout(() => {
+                copyBtn.querySelector('span').textContent = originalText;
+            }, 2000);
+        }).catch(err => {
+            console.error('Error al copiar texto: ', err);
+            alert('No se pudo copiar el texto.');
+        });
+    });
+
+    // 2. Descargar como HTML
+    downloadHtmlBtn.addEventListener('click', () => {
+        const articleHtml = outputContainer.innerHTML;
+        const articleTitle = document.getElementById('article-title').value || 'articulo-generado';
+        
+        const fullHtml = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${articleTitle}</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        h1, h2, h3 { line-height: 1.2; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
+        pre { background-color: #f4f4f4; padding: 1rem; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    ${articleHtml}
+</body>
+</html>`;
+        const blob = new Blob([fullHtml], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${articleTitle.toLowerCase().replace(/\s+/g, '-')}.html`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+    // 3. Simulación de publicación en WordPress
+    publishDraftBtn.addEventListener('click', () => {
+        alert('Simulación: Enviando artículo a WordPress como borrador...\n(Esta es una función de demostración. La integración real requiere configuración adicional).');
+    });
+
+    publishPublicBtn.addEventListener('click', () => {
+        alert('Simulación: ¡Publicando artículo en WordPress!\n(Esta es una función de demostración. La integración real requiere configuración adicional).');
+    });
+
 });

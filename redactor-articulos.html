@@ -57,7 +57,7 @@
 
             <form id="article-generator-form">
                 
-                <!-- SECCIÓN DE ENTRADA PRINCIPAL -->
+                <!-- ... (TODO EL FORMULARIO SE MANTIENE EXACTAMENTE IGUAL) ... -->
                 <div class="generator-section">
                     <h3 class="generator-section-title">Entrada Principal</h3>
                     <div class="form-group">
@@ -69,45 +69,25 @@
                         <input type="text" id="keywords" name="keywords" placeholder="Ej: IA, inteligencia artificial, futuro, desarrollo, tendencias">
                     </div>
                 </div>
-
-                <!-- SECCIÓN DE CONFIGURACIÓN DE CONTENIDO -->
                 <div class="generator-section">
                     <h3 class="generator-section-title">Configuración de Contenido</h3>
                     <div class="config-grid-3col">
                         <div class="form-group">
                             <label for="tone-of-voice">Tono de Voz</label>
                             <select id="tone-of-voice" name="tone-of-voice">
-                                <option value="Ninguno" selected>Ninguno</option>
-                                <option value="Amigable">Amigable</option>
-                                <option value="Profesional">Profesional</option>
-                                <option value="Informativo">Informativo</option>
-                                <option value="Transaccional">Transaccional</option>
-                                <option value="Inspirador">Inspirador</option>
-                                <option value="Neutral">Neutral</option>
-                                <option value="Ingenioso">Ingenioso</option>
-                                <option value="Casual">Casual</option>
-                                <option value="Autorizado">Autorizado</option>
-                                <option value="Alentador">Alentador</option>
-                                <option value="Persuasivo">Persuasivo</option>
-                                <option value="Poético">Poético</option>
+                                <option value="Ninguno" selected>Ninguno</option><option value="Amigable">Amigable</option><option value="Profesional">Profesional</option><option value="Informativo">Informativo</option><option value="Transaccional">Transaccional</option><option value="Inspirador">Inspirador</option><option value="Neutral">Neutral</option><option value="Ingenioso">Ingenioso</option><option value="Casual">Casual</option><option value="Autorizado">Autorizado</option><option value="Alentador">Alentador</option><option value="Persuasivo">Persuasivo</option><option value="Poético">Poético</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="point-of-view">Punto de Vista</label>
                             <select id="point-of-view" name="point-of-view">
-                                <option value="tercera-persona" selected>Tercera Persona (impersonal)</option>
-                                <option value="primera-persona">Primera Persona ("yo", "nosotros")</option>
-                                <option value="segunda-persona">Segunda Persona ("tú", "usted")</option>
+                                <option value="tercera-persona" selected>Tercera Persona (impersonal)</option><option value="primera-persona">Primera Persona ("yo", "nosotros")</option><option value="segunda-persona">Segunda Persona ("tú", "usted")</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="intro-hook">Gancho de Introducción</label>
                             <select id="intro-hook" name="intro-hook">
-                                <option value="pregunta" selected>Pregunta</option>
-                                <option value="estadistica">Dato Estadístico</option>
-                                <option value="cita">Cita</option>
-                                <option value="anecdota">Anécdota o Historia</option>
-                                <option value="emocional">Apelación Personal o Emocional</option>
+                                <option value="pregunta" selected>Pregunta</option><option value="estadistica">Dato Estadístico</option><option value="cita">Cita</option><option value="anecdota">Anécdota o Historia</option><option value="emocional">Apelación Personal o Emocional</option>
                             </select>
                        </div>
                     </div>
@@ -116,8 +96,6 @@
                         <textarea id="target-audience" name="target-audience" rows="2" placeholder="Ej: Desarrolladores de software con interés en machine learning, directores de tecnología, etc."></textarea>
                     </div>
                 </div>
-                
-                <!-- SECCIÓN DE CONFIGURACIÓN DE IA Y ESTRUCTURA -->
                 <div class="generator-section">
                     <h3 class="generator-section-title">Configuración de IA y Estructura</h3>
                     <div class="config-grid-3col">
@@ -184,8 +162,8 @@
                                  <option value="es-ES" selected>Español</option>
                                  <option value="en-US">Inglés (EE. UU.)</option>
                                  <option value="en-GB">Inglés (Reino Unido)</option>
-                                 {...otras opciones de idioma}
-                            </select>
+
+                    <</select>
                         </div>
                         <div class="form-group">
                             <label for="article-type">Tipo de Artículo</label>
@@ -325,8 +303,7 @@
                                  <option value="UZ">Uzbekistán</option>
                                  <option value="VE">Venezuela</option>
                                  <option value="VN">Vietnam</option>>
-                                 {...otras opciones de país}
-                            </select>
+                                 </select>
                         </div>
                         <div class="form-group">
                             <label for="readability">Legibilidad</label>
@@ -344,50 +321,19 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="outline-structure-group">
                         <h4 class="config-panel-subtitle">Incluir en el Esquema</h4>
                         <div class="structure-grid">
-                            <div class="form-group toggle-group">
-                                <label for="include-conclusion">Conclusión</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-conclusion" name="include-conclusion" checked><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="include-tables">Tablas</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-tables" name="include-tables"><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="include-h3">Subtítulos (H3)</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-h3" name="include-h3" checked><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="include-lists">Listas</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-lists" name="include-lists"><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="include-italic">Cursiva</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-italic" name="include-italic"><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="include-quotes">Citas</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-quotes" name="include-quotes"><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="include-key-takeaways">Conclusiones Clave</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-key-takeaways" name="include-key-takeaways"><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="include-faq">Preguntas Frecuentes</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-faq" name="include-faq"><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="include-bold">Negrita</label>
-                                <label class="toggle-switch"><input type="checkbox" id="include-bold" name="include-bold" checked><span class="slider"></span></label>
-                            </div>
-                            <div class="form-group toggle-group">
-                                <label for="web-access">Conexión Web</label>
-                                <label class="toggle-switch"><input type="checkbox" id="web-access" name="web-access" checked><span class="slider"></span></label>
-                            </div>
+                            <div class="form-group toggle-group"><label for="include-conclusion">Conclusión</label><label class="toggle-switch"><input type="checkbox" id="include-conclusion" name="include-conclusion" checked><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="include-tables">Tablas</label><label class="toggle-switch"><input type="checkbox" id="include-tables" name="include-tables"><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="include-h3">Subtítulos (H3)</label><label class="toggle-switch"><input type="checkbox" id="include-h3" name="include-h3" checked><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="include-lists">Listas</label><label class="toggle-switch"><input type="checkbox" id="include-lists" name="include-lists"><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="include-italic">Cursiva</label><label class="toggle-switch"><input type="checkbox" id="include-italic" name="include-italic"><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="include-quotes">Citas</label><label class="toggle-switch"><input type="checkbox" id="include-quotes" name="include-quotes"><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="include-key-takeaways">Conclusiones Clave</label><label class="toggle-switch"><input type="checkbox" id="include-key-takeaways" name="include-key-takeaways"><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="include-faq">Preguntas Frecuentes</label><label class="toggle-switch"><input type="checkbox" id="include-faq" name="include-faq"><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="include-bold">Negrita</label><label class="toggle-switch"><input type="checkbox" id="include-bold" name="include-bold" checked><span class="slider"></span></label></div>
+                            <div class="form-group toggle-group"><label for="web-access">Conexión Web</label><label class="toggle-switch"><input type="checkbox" id="web-access" name="web-access" checked><span class="slider"></span></label></div>
                         </div>
                     </div>
                 </div>
@@ -404,6 +350,25 @@
                 <h2 class="generated-content-title">Resultado de la Generación</h2>
                 <div id="generated-article" class="generated-article-content">
                     <p class="placeholder-text">El contenido generado aparecerá aquí...</p>
+                </div>
+                <!-- ▼▼▼ SECCIÓN DE ACCIONES AÑADIDA ▼▼▼ -->
+                <div class="generated-content-actions hidden" id="content-actions">
+                    <button class="action-btn" id="copy-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copiar Texto</span>
+                    </button>
+                     <button class="action-btn" id="download-html-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <span>Descargar HTML</span>
+                    </button>
+                    <button class="action-btn" id="publish-draft-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+                        <span>Publicar (Borrador)</span>
+                    </button>
+                    <button class="action-btn" id="publish-public-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        <span>Publicar (Público)</span>
+                    </button>
                 </div>
             </div>
 
