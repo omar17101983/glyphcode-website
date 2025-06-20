@@ -1596,6 +1596,7 @@ html {
 /* --- ESTILO PARA OCULTAR ELEMENTOS --- */
 .hidden {
     display: none !important;
+<<<<<<< HEAD
 }
 /* /style.css - Añadir al final del archivo */
 
@@ -1627,4 +1628,6 @@ html {
     background-color: rgba(255, 155, 161, 0.1);
     color: #ff9ba1;
     border: 1px solid #ff9ba1;
+=======
+>>>>>>> b746c0ae2369a6d57bdcb0900e5ad39d844e0b35
 }
