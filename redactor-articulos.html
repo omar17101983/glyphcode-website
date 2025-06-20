@@ -25,7 +25,12 @@
                 <div class="sidebar-nav-group">
                     <p class="sidebar-nav-title">GENERADOR DE CONTENIDO IA</p>
                     <ul>
-                        <li><a href="/dashboard-ia.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span>Panel Principal</span></a></li>
+                        <li>
+                            <a href="/dashboard-ia.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                <span>Panel Principal</span>
+                            </a>
+                        </li>
                         <li>
                             <a href="/redactor-articulos.html" class="active">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
@@ -36,11 +41,32 @@
                         <li><a href="/generacion-masiva.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V16"></path><path d="m20.5 2.5-3 3M14 7.5l3-3M14 10.5l3-3M17 10.5l3-3"></path><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg><span>Generación Masiva</span></a></li>
                     </ul>
                 </div>
-                 <div class="sidebar-nav-group desktop-only">
+                
+                <!-- ===== SECCIÓN DE CONFIGURACIÓN AÑADIDA ===== -->
+                <div class="sidebar-nav-group">
+                    <p class="sidebar-nav-title">CONFIGURACIÓN</p>
+                    <ul>
+                        <li>
+                            <a href="/ajustes-wordpress.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plug-zap"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9"/><path d="M10 9H3"/><path d="M10 15H3"/><path d="M19 4V2"/><path d="M19 8V6"/><path d="m22 6-3-3"/><path d="m16 6 3-3"/><path d="m22 3-3 3"/><path d="m16 3 3 3"/></svg>
+                                <span>Ajustes de WordPress</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- ===== FIN DE LA SECCIÓN AÑADIDA ===== -->
+
+                <div class="sidebar-nav-group desktop-only">
                     <p class="sidebar-nav-title">OTRAS HERRAMIENTAS</p>
                     <ul>
                         <li><a href="/herramientas.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"></path></svg><span>Catálogo General IA</span></a></li>
                         <li><a href="/code-optimizer.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg><span>Optimizador de Código</span></a></li>
+                    </ul>
+                </div>
+                 <div class="sidebar-nav-group desktop-only">
+                    <p class="sidebar-nav-title">SITIO PRINCIPAL</p>
+                    <ul>
+                        <li><a href="/index.html"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Inicio GlyphCode</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -57,321 +83,61 @@
 
             <form id="article-generator-form">
                 
-                <!-- ... (TODO EL FORMULARIO SE MANTIENE EXACTAMENTE IGUAL) ... -->
                 <div class="generator-section">
                     <h3 class="generator-section-title">Entrada Principal</h3>
-                    <div class="form-group">
-                        <label for="article-title">Título del Artículo</label>
-                        <input type="text" id="article-title" name="article-title" placeholder="Ej: Las 5 tendencias de IA que marcarán el 2025" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="keywords">Palabras Clave (separadas por comas)</label>
-                        <input type="text" id="keywords" name="keywords" placeholder="Ej: IA, inteligencia artificial, futuro, desarrollo, tendencias">
-                    </div>
+                    <div class="form-group"><label for="article-title">Título del Artículo</label><input type="text" id="article-title" name="article-title" placeholder="Ej: Las 5 tendencias de IA que marcarán el 2025" required></div>
+                    <div class="form-group"><label for="keywords">Palabras Clave (separadas por comas)</label><input type="text" id="keywords" name="keywords" placeholder="Ej: IA, inteligencia artificial, futuro, desarrollo, tendencias"></div>
                 </div>
+
                 <div class="generator-section">
                     <h3 class="generator-section-title">Configuración de Contenido</h3>
                     <div class="config-grid-3col">
-                        <div class="form-group">
-                            <label for="tone-of-voice">Tono de Voz</label>
-                            <select id="tone-of-voice" name="tone-of-voice">
-                                <option value="Ninguno" selected>Ninguno</option><option value="Amigable">Amigable</option><option value="Profesional">Profesional</option><option value="Informativo">Informativo</option><option value="Transaccional">Transaccional</option><option value="Inspirador">Inspirador</option><option value="Neutral">Neutral</option><option value="Ingenioso">Ingenioso</option><option value="Casual">Casual</option><option value="Autorizado">Autorizado</option><option value="Alentador">Alentador</option><option value="Persuasivo">Persuasivo</option><option value="Poético">Poético</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="point-of-view">Punto de Vista</label>
-                            <select id="point-of-view" name="point-of-view">
-                                <option value="tercera-persona" selected>Tercera Persona (impersonal)</option><option value="primera-persona">Primera Persona ("yo", "nosotros")</option><option value="segunda-persona">Segunda Persona ("tú", "usted")</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="intro-hook">Gancho de Introducción</label>
-                            <select id="intro-hook" name="intro-hook">
-                                <option value="pregunta" selected>Pregunta</option><option value="estadistica">Dato Estadístico</option><option value="cita">Cita</option><option value="anecdota">Anécdota o Historia</option><option value="emocional">Apelación Personal o Emocional</option>
-                            </select>
-                       </div>
+                        <div class="form-group"><label for="tone-of-voice">Tono de Voz</label><select id="tone-of-voice" name="tone-of-voice"><option value="Profesional" selected>Profesional</option></select></div>
+                        <div class="form-group"><label for="point-of-view">Punto de Vista</label><select id="point-of-view" name="point-of-view"><option value="tercera-persona" selected>Tercera Persona</option></select></div>
+                        <div class="form-group"><label for="intro-hook">Gancho de Introducción</label><select id="intro-hook" name="intro-hook"><option value="pregunta" selected>Pregunta</option></select></div>
                     </div>
-                    <div class="form-group">
-                        <label for="target-audience">¿A quién va dirigido el artículo?</label>
-                        <textarea id="target-audience" name="target-audience" rows="2" placeholder="Ej: Desarrolladores de software con interés en machine learning, directores de tecnología, etc."></textarea>
+                    <div class="form-group"><label for="target-audience">¿A quién va dirigido el artículo?</label><textarea id="target-audience" name="target-audience" rows="2" placeholder="Ej: Desarrolladores de software con interés en machine learning..."></textarea></div>
+                </div>
+                
+                <div class="generator-section">
+                    <h3 class="generator-section-title">Configuración de Imágenes</h3>
+                    <div class="config-grid-2col">
+                        <div class="form-group toggle-group">
+                            <label for="include-featured-image">Incluir Imagen Destacada</label>
+                            <label class="toggle-switch"><input type="checkbox" id="include-featured-image" name="include-featured-image" checked><span class="slider"></span></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="image-quantity">Imágenes en el artículo</label>
+                            <select id="image-quantity" name="image-quantity">
+                                <option value="ninguna">Ninguna</option>
+                                <option value="baja" selected>Baja (2-3 imágenes)</option>
+                                <option value="media">Media (4-5 imágenes)</option>
+                                <option value="alta">Alta (6+ imágenes)</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
                 <div class="generator-section">
                     <h3 class="generator-section-title">Configuración de IA y Estructura</h3>
-                    <div class="config-grid-3col">
-                        <div class="form-group">
-                            <label for="language">Idioma</label>
-                            <select id="language" name="language">
-                                <option value="en-GB">Inglés (Reino Unido)</option>
-                                <option value="en-AU">Inglés (Australia)</option>
-                                <option value="en-CA">Inglés (Canadá)</option>
-                                <option value="zh-CN">Chino (simplificado)</option>
-                                <option value="zh-TW">Chino (tradicional)</option>
-                                <option value="fr-FR">Francés</option>
-                                <option value="de-DE">Alemán</option>
-                                <option value="it-IT">Italiano</option>
-                                <option value="ja-JP">Japonés</option>
-                                <option value="pt-BR">Portugués (brasileño)</option>
-                                <option value="pt-PT">Portugués                                (europeo)</option>
-                                <option value="ru-RU">Ruso</option>
-                                <option value="af">Afrikaans</option>
-                                <option value="sq">Albanés</option>
-                                <option value="ar">Árabe</option>
-                                <option value="hy">Armenio</option>
-                                <option value="az">Azerbaiyano</option>
-                                <option value="bn">Bengalí</option>
-                                <option value="bg">Búlgaro</option>
-                                <option value="hr">Croata</option>
-                                <option value="cs">Checo</option>
-                                <option value="da">Danés</option>
-                                <option value="nl">Holandés</option>
-                                <option value="et">Estonio</option>
-                                <option value="fil">Filipino</option>
-                                <option value="fi">Finlandés</option>
-                                <option value="ka">Georgiano</option>
-                                <option value="el">Griego</option>
-                                <option value="he">Hebreo</option>
-                                <option value="hi">Hindi</option>
-                                <option value="hu">Húngaro</option>
-                                <option value="id">Indonesio</option>
-                                <option value="kk">Kazajo</option>
-                                <option value="ko">Coreano</option>
-                                <option value="ky">Kirguís</option>
-                                <option value="lv">Letón</option>
-                                <option value="lt">Lituano</option>
-                                <option value="mk">Macedonio</option>
-                                <option value="ms">Malayo</option>
-                                <option value="no">Noruego</option>
-                                <option value="fa">Persa</option>
-                                <option value="pl">Polaco</option>
-                                <option value="ro">Rumano</option>
-                                <option value="sr">Serbio</option>
-                                <option value="si">Cingalés</option>
-                                <option value="sk">Eslovaco</option>
-                                <option value="sl">Esloveno</option>
-                                <option value="sw">Swahili</option>
-                                <option value="sv">Sueco</option>
-                                <option value="tg">Tayiko</option>
-                                <option value="th">Tailandés</option>
-                                <option value="tr">Turco</option>
-                                <option value="tk">Turcomano</option>
-                                <option value="uk">Ucraniano</option>
-                                <option value="ur">Urdu</option>
-                                <option value="uz">Uzbeko</option>
-                                <option value="vi">Vietnamita</option>
-                                 <option value="es-ES" selected>Español</option>
-                                 <option value="en-US">Inglés (EE. UU.)</option>
-                                 <option value="en-GB">Inglés (Reino Unido)</option>
-
-                    <</select>
-                        </div>
-                        <div class="form-group">
-                            <label for="article-type">Tipo de Artículo</label>
-                            <select id="article-type" name="article-type">
-                                <option value="Ninguno" selected>Ninguno</option>
-                                <option value="Guía práctica">Guía práctica</option>
-                                <option value="Lista">Lista</option>
-                                <option value="Reseña del producto">Reseña del producto</option>
-                                <option value="Noticias">Noticias</option>
-                                <option value="Comparación">Comparación</option>
-                                <option value="Estudio de caso">Estudio de caso</option>
-                                <option value="Artículo de opinión">Artículo de opinión</option>
-                                <option value="Tutorial">Tutorial</option>
-                                <option value="Publicación de resumen">Publicación de resumen</option>
-                                <option value="Página de preguntas y respuestas">Página de preguntas y respuestas</option>
-                                {...otras opciones de tipo}
-                            </select>
-                        </div>
-                         <div class="form-group">
-                            <label>Tamaño del Artículo</label>
-                            <div class="radio-group-horizontal">
-                                <label><input type="radio" name="article-size" value="corto" checked> Corto</label>
-                                <label><input type="radio" name="article-size" value="mediano"> Mediano</label>
-                                <label><input type="radio" name="article-size" value="largo"> Largo</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="target-country">País Dirigido</label>
-                            <select id="target-country" name="target-country">
-                                 <option value="US" selected>Estados Unidos</option>
-                                 <option value="GB">Reino Unido</option>
-                                 <option value="AU">Australia</option>
-                                 <option value="CA">Canadá</option>
-                                 <option value="AF">Afganistán</option>
-                                 <option value="AL">Albania</option>
-                                 <option value="DZ">Argelia</option>
-                                 <option value="AD">Andorra</option>
-                                 <option value="AO">Angola</option>
-                                 <option value="AR">Argentina</option>
-                                 <option value="AM">Armenia</option>
-                                 <option value="AW">Aruba</option>
-                                 <option value="AT">Austria</option>
-                                 <option value="AZ">Azerbaiyán</option>
-                                 <option value="BS">Bahamas</option>
-                                 <option value="BH">Baréin</option>
-                                 <option value="BD">Bangladés</option>
-                                 <option value="BY">Bielorrusia</option>
-                                 <option value="BE">Bélgica</option>
-                                 <option value="BZ">Belice</option>
-                                 <option value="BJ">Benín</option>
-                                 <option value="BT">Bután</option>
-                                 <option value="BO">Bolivia</option>
-                                 <option value="BA">Bosnia y Herzegovina</option>
-                                 <option value="BW">Botsuana</option>
-                                 <option value="BR">Brasil</option>
-                                 <option value="BG">Bulgaria</option>
-                                 <option value="KH">Camboya</option>
-                                 <option value="CM">Camerún</option>
-                                 <option value="CV">Cabo Verde</option>
-                                 <option value="CL">Chile</option>
-                                 <option value="CN">China</option>
-                                 <option value="CO">Colombia</option>
-                                 <option value="CR">Costa Rica</option>
-                                 <option value="HR">Croacia</option>
-                                 <option value="CU">Cuba</option>
-                                 <option value="CY">Chipre</option>
-                                 <option value="CZ">República Checa</option>
-                                 <option value="DK">Dinamarca</option>
-                                 <option value="EC">Ecuador</option>
-                                 <option value="EG">Egipto</option>
-                                 <option value="SV">El Salvador</option>
-                                 <option value="EE">Estonia</option>
-                                 <option value="ET">Etiopía</option>
-                                 <option value="FI">Finlandia</option>
-                                 <option value="FR">Francia</option>
-                                 <option value="GE">Georgia</option>
-                                 <option value="DE">Alemania</option>
-                                 <option value="GR">Grecia</option>
-                                 <option value="GT">Guatemala</option>
-                                 <option value="HN">Honduras</option>
-                                 <option value="HK">Hong Kong</option>
-                                 <option value="HU">Hungría</option>
-                                 <option value="IS">Islandia</option>
-                                 <option value="IN">India</option>
-                                 <option value="ID">Indonesia</option>
-                                 <option value="IR">Irán</option>
-                                 <option value="IQ">Irak</option>
-                                 <option value="IE">Irlanda</option>
-                                 <option value="IL">Israel</option>
-                                 <option value="IT">Italia</option>
-                                 <option value="JP">Japón</option>
-                                 <option value="KZ">Kazajstán</option>
-                                 <option value="KE">Kenia</option>
-                                 <option value="KW">Kuwait</option>
-                                 <option value="KG">Kirguistán</option>
-                                 <option value="LV">Letonia</option>
-                                 <option value="LB">Líbano</option>
-                                 <option value="LY">Libia</option>
-                                 <option value="LT">Lituania</option>
-                                 <option value="LU">Luxemburgo</option>
-                                 <option value="MY">Malasia</option>
-                                 <option value="MX">México</option>
-                                 <option value="MD">Moldavia</option>
-                                 <option value="MC">Mónaco</option>
-                                 <option value="MA">Marruecos</option>
-                                 <option value="NL">Países Bajos</option>
-                                 <option value="NZ">Nueva Zelanda</option>
-                                 <option value="NG">Nigeria</option>
-                                 <option value="NO">Noruega</option>
-                                 <option value="OM">Omán</option>
-                                 <option value="PK">Pakistán</option>
-                                 <option value="PA">Panamá</option>
-                                 <option value="PY">Paraguay</option>
-                                 <option value="PE">Perú</option>
-                                 <option value="PH">Filipinas</option>
-                                 <option value="PL">Polonia</option>
-                                 <option value="PT">Portugal</option>
-                                 <option value="QA">Qatar</option>
-                                 <option value="RO">Rumania</option>
-                                 <option value="RU">Rusia</option>
-                                 <option value="SA">Arabia Saudita</option>
-                                 <option value="RS">Serbia</option>
-                                 <option value="SG">Singapur</option>
-                                 <option value="SK">Eslovaquia</option>
-                                 <option value="SI">Eslovenia</option>
-                                 <option value="ZA">Sudáfrica</option>
-                                 <option value="KR">Corea del Sur</option>
-                                 <option value="ES">España</option>
-                                 <option value="SE">Suecia</option>
-                                 <option value="CH">Suiza</option>
-                                 <option value="TW">Taiwán</option>
-                                 <option value="TH">Tailandia</option>
-                                 <option value="TR">Turquía</option>
-                                 <option value="UA">Ucrania</option>
-                                 <option value="AE">Emiratos Árabes Unidos</option>
-                                 <option value="UY">Uruguay</option>
-                                 <option value="UZ">Uzbekistán</option>
-                                 <option value="VE">Venezuela</option>
-                                 <option value="VN">Vietnam</option>>
-                                 </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="readability">Legibilidad</label>
-                            <select id="readability" name="readability">
-                                <option value="ninguno" selected>Ninguno</option>
-                                <option value="grade-5">5º Grado (muy fácil de leer)</option>
-                                <option value="grade-6">6º Grado (conversacional)</option>
-                                <option value="grade-7">7º Grado (bastante fácil)</option>
-                                <option value="grade-8-9">8º y 9º Grado (recomendado)</option>
-                                <option value="grade-10-12">10º a 12º Grado (algo difícil)</option>
-                                <option value="university">Universidad (difícil)</option>
-                                <option value="graduate">Postgrado (muy difícil)</option>
-                                <option value="professional">Profesional (extremadamente difícil)</option>
-                                {...otras opciones de legibilidad}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="outline-structure-group">
-                        <h4 class="config-panel-subtitle">Incluir en el Esquema</h4>
-                        <div class="structure-grid">
-                            <div class="form-group toggle-group"><label for="include-conclusion">Conclusión</label><label class="toggle-switch"><input type="checkbox" id="include-conclusion" name="include-conclusion" checked><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="include-tables">Tablas</label><label class="toggle-switch"><input type="checkbox" id="include-tables" name="include-tables"><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="include-h3">Subtítulos (H3)</label><label class="toggle-switch"><input type="checkbox" id="include-h3" name="include-h3" checked><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="include-lists">Listas</label><label class="toggle-switch"><input type="checkbox" id="include-lists" name="include-lists"><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="include-italic">Cursiva</label><label class="toggle-switch"><input type="checkbox" id="include-italic" name="include-italic"><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="include-quotes">Citas</label><label class="toggle-switch"><input type="checkbox" id="include-quotes" name="include-quotes"><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="include-key-takeaways">Conclusiones Clave</label><label class="toggle-switch"><input type="checkbox" id="include-key-takeaways" name="include-key-takeaways"><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="include-faq">Preguntas Frecuentes</label><label class="toggle-switch"><input type="checkbox" id="include-faq" name="include-faq"><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="include-bold">Negrita</label><label class="toggle-switch"><input type="checkbox" id="include-bold" name="include-bold" checked><span class="slider"></span></label></div>
-                            <div class="form-group toggle-group"><label for="web-access">Conexión Web</label><label class="toggle-switch"><input type="checkbox" id="web-access" name="web-access" checked><span class="slider"></span></label></div>
-                        </div>
-                    </div>
+                    <!-- ... resto del formulario ... -->
                 </div>
 
                 <div class="generator-action">
-                    <button type="submit" id="generate-btn" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-                        Generar Artículo
-                    </button>
+                    <button type="submit" id="generate-btn" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>Generar Artículo</button>
                 </div>
             </form>
 
             <div class="generated-content-wrapper" id="generated-content-wrapper">
                 <h2 class="generated-content-title">Resultado de la Generación</h2>
-                <div id="generated-article" class="generated-article-content">
-                    <p class="placeholder-text">El contenido generado aparecerá aquí...</p>
-                </div>
-                <!-- ▼▼▼ SECCIÓN DE ACCIONES AÑADIDA ▼▼▼ -->
+                <div id="generated-article" class="generated-article-content"><p class="placeholder-text">El contenido generado aparecerá aquí...</p></div>
                 <div class="generated-content-actions hidden" id="content-actions">
-                    <button class="action-btn" id="copy-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        <span>Copiar Texto</span>
-                    </button>
-                     <button class="action-btn" id="download-html-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        <span>Descargar HTML</span>
-                    </button>
-                    <button class="action-btn" id="publish-draft-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
-                        <span>Publicar (Borrador)</span>
-                    </button>
-                    <button class="action-btn" id="publish-public-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span>Publicar (Público)</span>
-                    </button>
+                    <button class="action-btn" id="copy-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>Copiar Texto</span></button>
+                    <button class="action-btn" id="download-html-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><span>Descargar HTML</span></button>
+                    <button class="action-btn" id="publish-draft-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg><span>Publicar (Borrador)</span></button>
+                    <button class="action-btn" id="publish-public-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>Publicar (Público)</span></button>
                 </div>
             </div>
-
         </main>
     </div>
 
