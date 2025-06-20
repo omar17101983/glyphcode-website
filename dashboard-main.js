@@ -1,6 +1,7 @@
-// dashboard-main.js
+// dashboard-main.js (CORREGIDO Y COMPLETO)
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const API_URL = 'https://api.glyphcode.com'; // URL centralizada de tu backend
     const userId = localStorage.getItem('userId');
     
     // Elementos del DOM para actualizar
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch('/api/get-user-status', {
+        const response = await fetch(`${API_URL}/api/get-user-status`, { // Usando la nueva URL
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: userId }),

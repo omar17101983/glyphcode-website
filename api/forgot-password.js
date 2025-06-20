@@ -46,7 +46,7 @@ export default async function handler(req, res) {
         });
 
         // 4. Crear la URL de reseteo (IMPORTANTE: cambia 'TU_DOMINIO.com' por tu dominio real cuando lo despliegues)
-        const resetUrl = `http://localhost:3000/reset-password.html?token=${resetToken}`;
+        const resetUrl =`https://glyphcode.com/reset-password.html?token=${resetToken}`;
 
         // 5. Enviar el email
         await transporter.sendMail({

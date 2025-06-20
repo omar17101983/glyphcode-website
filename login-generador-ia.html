@@ -206,168 +206,35 @@
 <!-- ▼▼▼ ESTE ES EL SCRIPT COMPLETO Y CORRECTO ▼▼▼ -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // --- LÓGICA PARA EL HEADER RESPONSIVE ---
-    const landingNav = document.getElementById('landing-nav');
-    const landingHamburgerBtn = document.getElementById('landing-hamburger-btn');
-    if (landingHamburgerBtn) {
-        landingHamburgerBtn.addEventListener('click', () => {
-            landingNav.classList.toggle('nav-active');
-            landingHamburgerBtn.classList.toggle('is-active');
-            document.body.classList.toggle('no-scroll');
-        });
-    }
-    const closeMobileMenu = () => {
-        if (landingNav && landingNav.classList.contains('nav-active')) {
-            landingNav.classList.remove('nav-active');
-            landingHamburgerBtn.classList.remove('is-active');
-            document.body.classList.remove('no-scroll');
-        }
-    };
-    document.querySelectorAll('.landing-nav-menu a[href^="#"]').forEach(link => link.addEventListener('click', closeMobileMenu));
+    const API_URL = 'https://api.glyphcode.com'; // <-- NUESTRA NUEVA URL CENTRAL
+    // ... (el resto del script de la landing page) ...
 
-    // --- LÓGICA PARA EL FAQ ACORDEÓN ---
-    const faqItems = document.querySelectorAll('.faq-item-accordion');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            faqItems.forEach(otherItem => otherItem.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
-        });
-    });
-
-    // --- LÓGICA MEJORADA PARA EL MODAL DE AUTENTICACIÓN ---
-    const modal = document.getElementById('auth-modal');
-    const modalOverlay = document.querySelector('.modal-overlay');
-    const modalCloseBtn = document.getElementById('modal-close');
-    
-    // Vistas del Modal
-    const authView = document.getElementById('auth-view');
-    const resetView = document.getElementById('reset-view');
-
-    // Elementos de la vista de Auth
-    const modalTitle = document.getElementById('modal-title');
-    const modalForm = document.getElementById('modal-form');
-    const modalSubmitBtn = document.getElementById('modal-submit-btn');
-    const passwordInput = document.getElementById('modal-password');
-    const passwordLabel = document.getElementById('password-label');
-    const passwordToggle = document.getElementById('password-toggle');
-    const eyeOpen = passwordToggle.querySelector('.eye-open');
-    const eyeClosed = passwordToggle.querySelector('.eye-closed');
-    const forgotPasswordLink = document.getElementById('forgot-password-link');
-
-    // Elementos de la vista de Reset
-    const resetForm = document.getElementById('reset-form');
-    const resetSubmitBtn = document.getElementById('reset-submit-btn');
-    const backToLoginLink = document.getElementById('back-to-login-link');
-    
-    // Botones que abren el modal
-    const navLoginBtn = document.getElementById('nav-login-btn');
-    const navSignupBtn = document.getElementById('nav-signup-btn');
-    const heroSignupBtn = document.getElementById('hero-signup-btn');
-    const planSignupBtns = document.querySelectorAll('.plan-signup-btn');
-    const finalCtaBtn = document.getElementById('final-cta-btn');
-
-    let currentMode = 'signup'; 
-
-    const openModal = (mode, title, buttonText) => {
-        currentMode = mode;
-        if(modalForm) modalForm.reset(); 
-        if(resetForm) resetForm.reset();
-        
-        // --- ESTA ES LA LÓGICA CORREGIDA ---
-        // Aseguramos que al abrir, solo se vea la vista de login/registro
-        if (authView) authView.classList.remove('hidden');
-        if (resetView) resetView.classList.add('hidden');
-
-        if (mode === 'login') {
-            if(modalTitle) modalTitle.textContent = 'Acceder a tu Cuenta';
-            if(passwordLabel) passwordLabel.textContent = 'Contraseña:';
-            if(modalSubmitBtn) modalSubmitBtn.textContent = 'Acceder';
-        } else { // signup
-            if(modalTitle) modalTitle.textContent = title || 'Crear Cuenta Nueva';
-            if(passwordLabel) passwordLabel.textContent = 'Nueva Contraseña:';
-            if(modalSubmitBtn) modalSubmitBtn.textContent = buttonText || 'Registrarse';
-        }
-        if(modal) modal.classList.remove('hidden');
-    };
-
-    const closeModal = () => {
-        if(modal) modal.classList.add('hidden');
-    };
-
-    // Lógica del ojo para mostrar/ocultar contraseña
-    if (passwordToggle) {
-        passwordToggle.addEventListener('click', () => {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            eyeOpen.classList.toggle('hidden');
-            eyeClosed.classList.toggle('hidden');
-        });
-    }
-
-    // --- LÓGICA CORREGIDA PARA CAMBIAR VISTAS ---
-    if (forgotPasswordLink) {
-        forgotPasswordLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            authView.classList.add('hidden'); // Oculta el login
-            resetView.classList.remove('hidden'); // Muestra el reseteo
-        });
-    }
-
-    if (backToLoginLink) {
-        backToLoginLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            resetView.classList.add('hidden'); // Oculta el reseteo
-            authView.classList.remove('hidden'); // Muestra el login
-        });
-    }
-
-    // Lógica del formulario principal (Login/Registro)
+    // Dentro del listener del modalForm...
     if(modalForm) {
         modalForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const originalButtonText = modalSubmitBtn.textContent;
-            modalSubmitBtn.textContent = 'ENVIANDO...';
-            modalSubmitBtn.disabled = true;
-
-            const email = document.getElementById('modal-email').value;
-            const password = document.getElementById('modal-password').value;
-            
+            // ...
             const isLogin = currentMode === 'login';
-            const endpoint = isLogin ? '/api/login' : '/api/register';
+            const endpoint = isLogin ? `${API_URL}/api/login` : `${API_URL}/api/register`; // <-- CAMBIO AQUÍ
 
             try {
-                const response = await fetch(endpoint, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, clave_acceso: password }),
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json().catch(() => ({ message: `Error del servidor: ${response.status}` }));
-                    throw new Error(errorData.message);
-                }
-
-                const data = await response.json();
-
-                if (isLogin) {
-                    localStorage.setItem('userId', data.userId); 
-                    window.location.href = "/dashboard-ia.html";
-                } else {
-                    alert('¡Registro completado con éxito! Ahora puedes acceder con tus datos.');
-                    openModal('login'); 
-                }
-
-            } catch (error) {
-                console.error(`Error en ${currentMode}:`, error);
-                alert(`Hubo un problema: ${error.message}`); 
-            } finally {
-                modalSubmitBtn.textContent = originalButtonText;
-                modalSubmitBtn.disabled = false;
-            }
+                const response = await fetch(endpoint, { /* ... */ });
+                // ...
+            } catch (error) { /* ... */ }
         });
     }
+
+    // Dentro del listener del resetForm...
+    if(resetForm) {
+        resetForm.addEventListener('submit', async (event) => {
+            // ...
+            try {
+                const response = await fetch(`${API_URL}/api/forgot-password`, { /* ... */ }); // <-- CAMBIO AQUÍ
+                // ...
+            } catch (error) { /* ... */ }
+        });
+    }
+});
+</script>
 
     // Lógica del formulario de reseteo de contraseña
     if(resetForm) {
