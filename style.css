@@ -1596,6 +1596,133 @@ html {
 /* --- ESTILO PARA OCULTAR ELEMENTOS --- */
 .hidden {
     display: none !important;
+<<<<<<< HEAD
+}
+/* /style.css - Añadir al final del archivo */
+
+.form-hint {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+}
+
+#form-message {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 4px;
+    display: none; /* Se muestra con JS */
+}
+
+#form-message.success-message {
+    display: block;
+    background-color: rgba(var(--neon-primary-rgb), 0.1);
+    color: var(--neon-primary);
+    border: 1px solid var(--neon-primary);
+}
+
+#form-message.error-message {
+    display: block;
+    background-color: rgba(255, 155, 161, 0.1);
+    color: #ff9ba1;
+    border: 1px solid #ff9ba1;
+=======
+>>>>>>> b746c0ae2369a6d57bdcb0900e5ad39d844e0b35
+}
+/* ... (todo tu CSS anterior) ... */
+
+/* ▼▼▼ ESTILO PARA LA IMAGEN DESTACADA ▼▼▼ */
+
+.featured-image {
+    border: 2px solid var(--neon-primary);
+    box-shadow: 0 0 20px rgba(var(--neon-primary-rgb), 0.2);
+    padding: 15px;
+}
+
+.featured-image::before {
+    content: 'IMAGEN DESTACADA';
+    display: block;
+    width: fit-content;
+    margin: -25px 0 10px 0;
+    padding: 4px 12px;
+    background-color: var(--neon-primary);
+    color: var(--color-background);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+/* ... tu CSS anterior ... */
+
+/* ▼▼▼ MEJORAS PARA LAS IMÁGENES GENERADAS ▼▼▼ */
+
+.generated-image {
+    margin: 40px auto; /* Centra la figura en el artículo */
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 720px; /* Un ancho máximo razonable para un blog */
+    width: 100%;
+}
+
+.generated-image img {
+    width: 100%; /* La imagen ocupa el 100% de su contenedor (figure) */
+    height: auto; /* Mantenemos la proporción */
+    max-height: 450px; /* LÍMITE DE ALTURA para evitar imágenes gigantes */
+    object-fit: cover; /* Recorta la imagen para encajar sin deformarse */
+    display: block;
+    border-radius: 4px;
+    margin: 0 auto; 
+}
+
+/* ... (los estilos de .featured-image se mantienen igual) ... */
+/* --- ESTILOS MEJORADOS PARA EL MODAL --- */
+.password-wrapper {
+    position: relative;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--color-text-muted);
+}
+.password-toggle-icon:hover {
+    color: var(--neon-primary);
+}
+.password-toggle-icon .hidden {
+    display: none;
+}
+
+.modal-footer-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal-footer-links a {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    text-decoration: underline;
+}
+.modal-footer-links a:hover {
+    color: var(--neon-primary);
+}
+.modal-description {
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+/* --- ESTILO PARA OCULTAR ELEMENTOS --- */
+.hidden {
+    display: none !important;
 }
 /* /style.css - Añadir al final del archivo */
 

@@ -1,4 +1,11 @@
 // redactor-articulos.js (VERSIÓN FINAL CON PUBLICACIÓN REAL)
+<<<<<<< HEAD
+// redactor-articulos.js (VERSIÓN FINAL CON PUBLICACIÓN REAL)
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Referencias a elementos...
+=======
+// redactor-articulos.js (VERSIÓN FINAL COMPLETA)
 
 document.addEventListener('DOMContentLoaded', () => {
     // Referencias a elementos...
@@ -9,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const actionsContainer = document.getElementById('content-actions');
     const copyBtn = document.getElementById('copy-btn');
     const downloadHtmlBtn = document.getElementById('download-html-btn');
+    const publishWpDraftBtn = document.getElementById('publish-draft-btn');
+    const publishWpPublicBtn = document.getElementById('publish-public-btn');
     const publishWpDraftBtn = document.getElementById('publish-draft-btn');
     const publishWpPublicBtn = document.getElementById('publish-public-btn');
 
@@ -89,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!userId) { window.location.href = '/login-generador-ia.html'; return; }
         if(publishWpDraftBtn) publishWpDraftBtn.disabled = true;
         if(publishWpPublicBtn) publishWpPublicBtn.disabled = true;
+        if (!userId) { window.location.href = '/login-generador-ia.html'; return; }
+        if(publishWpDraftBtn) publishWpDraftBtn.disabled = true;
+        if(publishWpPublicBtn) publishWpPublicBtn.disabled = true;
 
         const formData = new FormData(form);
         const settings = Object.fromEntries(formData.entries());
@@ -96,11 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
             'include-conclusion', 'include-tables', 'include-h3', 'include-lists',
             'include-italic', 'include-quotes', 'include-key-takeaways',
             'include-faq', 'include-bold', 'web-access', 'include-featured-image'
+            'include-faq', 'include-bold', 'web-access', 'include-featured-image'
         ];
         toggles.forEach(toggle => settings[toggle] = formData.has(toggle));
         const detailedPrompt = constructPrompt(settings);
         generateBtn.disabled = true;
         generateBtn.innerHTML = `<span class="spinner"></span>GENERANDO...`;
+        outputContainer.innerHTML = `<div class="thinking-animation"><p>Verificando límites, contactando al modelo y buscando imágenes...</p></div>`;
         outputContainer.innerHTML = `<div class="thinking-animation"><p>Verificando límites, contactando al modelo y buscando imágenes...</p></div>`;
         outputWrapper.style.display = 'block';
         actionsContainer.classList.add('hidden');
@@ -118,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 publishWpPublicBtn.disabled = false;
             }
         } catch (error) {
+            outputContainer.innerHTML = `<p class="placeholder-text error-message">Error: ${error.message}.</p>`;
             outputContainer.innerHTML = `<p class="placeholder-text error-message">Error: ${error.message}.</p>`;
         } finally {
             generateBtn.disabled = false;
