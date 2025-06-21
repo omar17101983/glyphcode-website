@@ -105,6 +105,32 @@
                         </div>
                     </div>
                 </div>
+                <!-- Pega esta sección en redactor-articulos.html -->
+
+<div class="generator-section">
+    <h3 class="generator-section-title">Configuración SEO (para Yoast)</h3>
+    <div class="form-group">
+        <label for="focus_keyword">Palabra Clave Principal (Focus Keyword)</label>
+        <input type="text" id="focus_keyword" name="focus_keyword" placeholder="La keyword más importante para Yoast SEO">
+    </div>
+    <div class="form-group">
+        <label for="seo_title">Título SEO</label>
+        <input type="text" id="seo_title" name="seo_title" placeholder="Opcional: si quieres un título para Google diferente al del artículo">
+    </div>
+    <div class="form-group">
+        <label for="meta_description">Metadescripción</label>
+        <textarea id="meta_description" name="meta_description" rows="3" placeholder="El texto que aparecerá en Google (155-160 caracteres recomendados)"></textarea>
+    </div>
+     <div class="form-group">
+        <label for="wp_tags">Etiquetas (separadas por comas)</label>
+        <input type="text" id="wp_tags" name="wp_tags" placeholder="tecnologia, innovacion, autos">
+    </div>
+    <div class="form-group">
+        <label for="wp_categories">ID de la Categoría</label>
+        <input type="number" id="wp_categories" name="wp_categories" placeholder="Ej: 1 (ID de la categoría en WordPress)">
+        <small class="form-hint">Ve a Entradas > Categorías en tu WP, edita una y mira la URL para encontrar su ID.</small>
+    </div>
+</div>
 
                 <div class="generator-section">
                     <h3 class="generator-section-title">Configuración de IA y Estructura</h3>

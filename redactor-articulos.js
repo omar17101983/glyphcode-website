@@ -31,33 +31,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function handlePublish(status) {
-        const userId = localStorage.getItem('userId');
-        const title = document.getElementById('article-title').value;
-        const content = outputContainer.innerHTML;
-        const buttonToUpdate = status === 'draft' ? publishWpDraftBtn : publishWpPublicBtn;
+    const userId = localStorage.getItem('userId');
+    const title = document.getElementById('article-title').value;
+    const content = outputContainer.innerHTML;
+    const buttonToUpdate = status === 'draft' ? publishWpDraftBtn : publishWpPublicBtn;
 
-        if (!buttonToUpdate || !title || !content) return;
+    const originalText = buttonToUpdate.innerHTML;
+    buttonToUpdate.disabled = true;
+    buttonToUpdate.innerHTML = `<span class="spinner"></span> PUBLICANDO...`;
+    
+    // --- RECOGEMOS TODOS LOS DATOS NUEVOS DEL FORMULARIO ---
+    const dataToSend = {
+        userId,
+        title,
+        content,
+        status,
+        focus_keyword: document.getElementById('focus_keyword').value,
+        seo_title: document.getElementById('seo_title').value,
+        meta_description: document.getElementById('meta_description').value,
+        wp_tags: document.getElementById('wp_tags').value,
+        wp_categories: document.getElementById('wp_categories').value,
+    };
 
-        const originalText = buttonToUpdate.innerHTML;
-        buttonToUpdate.disabled = true;
-        buttonToUpdate.innerHTML = `<span>...</span>`;
-        
-        try {
-            const response = await fetch('https://api.glyphcode.com/api/publish-to-wp', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, title, content, status }),
-            });
-            const result = await response.json();
-            if (!response.ok) throw new Error(result.error);
-            alert(`Éxito: ${result.message}`);
-        } catch (error) {
-            alert(`Error de publicación: ${error.message}`);
-        } finally {
-            buttonToUpdate.innerHTML = originalText;
-            buttonToUpdate.disabled = false;
-        }
+    try {
+        const response = await fetch('https://api.glyphcode.com/api/publish-to-wp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            // Enviamos el objeto completo
+            body: JSON.stringify(dataToSend),
+        });
+
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || `Error del servidor: ${response.status}`);
+        alert(`${result.message}\nEnlace: ${result.postLink}`);
+
+    } catch (error) {
+        console.error(`Error al publicar como ${status}:`, error);
+        alert(`Error de publicación: ${error.message}`);
+    } finally {
+        buttonToUpdate.innerHTML = originalText;
+        buttonToUpdate.disabled = false;
     }
+}
 
     // Listener del formulario
     form.addEventListener('submit', async (e) => {
