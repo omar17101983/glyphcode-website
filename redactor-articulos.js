@@ -126,23 +126,26 @@ document.addEventListener('DOMContentLoaded', () => {
                         includeFeaturedImage: form.querySelector('input[name="include-featured-image"]').checked
                     })
                 });
+    // ... tu código fetch ...
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.error || 'Error del servidor.');
+    }
 
-                const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(data.error || 'Error del servidor.');
-                }
+    // 1. Pones el contenido del artículo en la página
+    outputContainer.innerHTML = data.articleHtml;
 
-                outputContainer.innerHTML = data.articleHtml;
-                actionsContainer.classList.remove('hidden');
+    // 2. ¡AQUÍ ESTÁ LA MAGIA! Quitas la clase 'hidden' para que los botones aparezcan
+    actionsContainer.classList.remove('hidden');
 
-                // Comprobar si se pueden habilitar los botones de publicación
-                const canPublishToWp = await checkUserSettings(userId);
-                if (canPublishToWp) {
-                    if (publishWpDraftBtn) publishWpDraftBtn.disabled = false;
-                    if (publishWpPublicBtn) publishWpPublicBtn.disabled = false;
-                }
+    // 3. Compruebas si se puede publicar en WP para habilitar esos botones específicos
+    const canPublishToWp = await checkUserSettings(userId);
+    if (canPublishToWp) {
+        if (publishWpDraftBtn) publishWpDraftBtn.disabled = false;
+        if (publishWpPublicBtn) publishWpPublicBtn.disabled = false;
+    }
 
-            } catch (error) {
+} catch (error) { //...
                 outputContainer.innerHTML = `<p class="placeholder-text error-message">Error: ${error.message}.</p>`;
             } finally {
                 generateBtn.disabled = false;
