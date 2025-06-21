@@ -92,6 +92,28 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll');
         });
     }
+    const showToast = (message, type = 'success') => {
+    const toast = document.getElementById('toast-notification');
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.className = 'toast'; // Reseteamos las clases
+    if (type === 'error') {
+        toast.classList.add('error');
+    }
+
+    toast.classList.remove('hidden');
+    toast.classList.add('show');
+
+    // Ocultar la notificación después de 3 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+        // Esperamos a que termine la animación de salida para ocultarlo del todo
+        setTimeout(() => {
+            toast.classList.add('hidden');
+        }, 500); // 500ms es la duración de nuestra transición en CSS
+    }, 3000);
+};
     const modal = document.getElementById('auth-modal');
     const modalOverlay = document.querySelector('.modal-overlay');
     const modalCloseBtn = document.getElementById('modal-close');
@@ -178,13 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('userId', data.userId); 
                     window.location.href = "/dashboard-ia.html";
                 } else {
-                    alert('¡Registro completado con éxito! Ahora puedes acceder con tus datos.');
-                    openModal('login'); 
+                     showToast('¡Registro completado con éxito!');
+    openModal('login'); 
                 }
-            } catch (error) {
-                console.error(`Error en ${currentMode}:`, error);
-                alert(`Hubo un problema: ${error.message}`); 
-            } finally {
+            showToast(`Hubo un problema: ${error.message}`, 'error');
+} finally {
                 modalSubmitBtn.textContent = originalButtonText;
                 modalSubmitBtn.disabled = false;
             }
@@ -205,13 +225,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email }),
                 });
-                const data = await response.json();
+                showToast(data.message);
+if (response.ok) {
+    closeModal();
+}
                 alert(data.message); 
                 if (response.ok) { closeModal(); }
-            } catch (error) {
-                console.error('Error en forgot-password:', error);
-                alert('Hubo un problema al enviar el enlace.');
-            } finally {
+            showToast('Hubo un problema al enviar el enlace.', 'error');
+} finally {
                 resetSubmitBtn.textContent = originalButtonText;
                 resetSubmitBtn.disabled = false;
             }
@@ -233,5 +254,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+<!-- ... tu footer y tu modal ... -->
+
+<!-- ▼▼▼ AÑADIR ESTE ELEMENTO ▼▼▼ -->
+<div id="toast-notification" class="toast hidden"></div>
+
+</body>
+</html>
 </body>
 </html>

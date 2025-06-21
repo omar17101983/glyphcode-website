@@ -1596,7 +1596,6 @@ html {
 /* --- ESTILO PARA OCULTAR ELEMENTOS --- */
 .hidden {
     display: none !important;
-<<<<<<< HEAD
 }
 /* /style.css - Añadir al final del archivo */
 
@@ -1628,8 +1627,6 @@ html {
     background-color: rgba(255, 155, 161, 0.1);
     color: #ff9ba1;
     border: 1px solid #ff9ba1;
-=======
->>>>>>> b746c0ae2369a6d57bdcb0900e5ad39d844e0b35
 }
 /* ... (todo tu CSS anterior) ... */
 
@@ -1754,4 +1751,36 @@ html {
     background-color: rgba(255, 155, 161, 0.1);
     color: #ff9ba1;
     border: 1px solid #ff9ba1;
+}
+/* =============================================== */
+/* ===       ESTILOS NOTIFICACIÓN TOAST          === */
+/* =============================================== */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 150%); /* Empieza fuera de la pantalla */
+    background-color: var(--neon-primary);
+    color: var(--color-background);
+    padding: 15px 25px;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    z-index: 9999;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.toast.show {
+    transform: translate(-50%, 0); /* Se desliza hacia arriba */
+}
+
+.toast.hidden {
+    display: none; /* Oculto por defecto */
+}
+
+.toast.error {
+    background-color: #ff9ba1; /* Un color rojo para errores */
+    color: var(--color-background);
 }
