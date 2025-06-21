@@ -1,9 +1,6 @@
-// ======================================================================
-// ARCHIVO COMPLETO: redactor-articulos.js (VERSIÓN 4.0 - AUTOMÁTICA)
-// ======================================================================
+// redactor-articulos.js (VERSIÓN 4.1 - ENVIANDO featuredImageUrl)
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. REFERENCIAS A ELEMENTOS DEL DOM ---
     const form = document.getElementById('article-generator-form');
     const generateBtn = document.getElementById('generate-btn');
     const outputContainer = document.getElementById('generated-article');
@@ -13,12 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const publishWpDraftBtn = document.getElementById('publish-draft-btn');
     const publishWpPublicBtn = document.getElementById('publish-public-btn');
 
-    // Variable global en este script para guardar los datos SEO generados
+    // --- CAMBIO: AÑADIMOS UNA VARIABLE PARA LA IMAGEN DESTACADA ---
     let generatedSeoData = {};
+    let featuredImageUrl = null;
 
-    // --- 2. FUNCIONES AUXILIARES ---
-
-    // Función para comprobar si el usuario tiene WP configurado
     async function checkUserSettings(userId) {
         if (!userId) return false;
         try {
@@ -32,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Función para publicar en WordPress
     async function handlePublish(status) {
         const userId = localStorage.getItem('userId');
         const title = document.getElementById('article-title').value;
@@ -45,16 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonToUpdate.disabled = true;
         buttonToUpdate.innerHTML = `<span class="spinner"></span> PUBLICANDO...`;
         
+        // --- CAMBIO: AÑADIMOS featuredImageUrl AL OBJETO QUE ENVIAMOS ---
         const dataToSend = {
             userId,
             title,
             content,
             status,
             wp_category_id,
-            seoData: generatedSeoData, // Usamos los datos SEO que guardamos antes
+            seoData: generatedSeoData,
+            featuredImageUrl: featuredImageUrl, // <-- AQUÍ
         };
 
         try {
+            // La URL de la API ya está en tu código, la mantengo
             const response = await fetch('https://api.glyphcode.com/api/publish-to-wp', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -72,18 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 3. LISTENER PRINCIPAL DEL FORMULARIO ---
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const userId = localStorage.getItem('userId');
             if (!userId) { window.location.href = '/login-generador-ia.html'; return; }
 
-            // Resetear estado
             generateBtn.disabled = true;
             generateBtn.innerHTML = `<span class="spinner"></span>GENERANDO...`;
             actionsContainer.classList.add('hidden');
-            generatedSeoData = {}; // Limpiar datos SEO anteriores
+            // --- CAMBIO: RESETEAMOS AMBAS VARIABLES GLOBALES ---
+            generatedSeoData = {};
+            featuredImageUrl = null;
 
             try {
                 const formData = new FormData(form);
@@ -93,10 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     generate_focus_keyword: formData.has('generate_focus_keyword'),
                     generate_seo_title: formData.has('generate_seo_title'),
                     generate_meta_description: formData.has('generate_meta_description'),
-                    generate_tags: formData.has('generate_tags'),
                 };
 
-                const mainPrompt = `Genera un artículo sobre "${settings['article-title']}" usando las keywords: "${settings.keywords}". Incluye 3 marcadores de imagen [IMAGEN: descripción detallada].`;
+                const mainPrompt = `Genera un artículo para un blog sobre el tema "${settings['article-title']}" utilizando las siguientes palabras clave como guía: "${settings.keywords}". El tono debe ser profesional pero accesible. Estructura el artículo con un título principal (H1), una introducción, varios subtítulos (H2) con sus párrafos correspondientes, y una conclusión. Incluye 3 marcadores de imagen en lugares relevantes del texto, usando el formato [IMAGEN: descripción detallada de la imagen aquí].`;
 
                 const response = await fetch('https://api.glyphcode.com/api/generate-article', {
                     method: 'POST',
@@ -105,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         mainPrompt,
                         userId,
                         articleKeywords: settings.keywords,
-                        includeFeaturedImage: true,
+                        includeFeaturedImage: formData.has('include-featured-image'),
                         seoOptions,
                     })
                 });
@@ -113,12 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.error || 'Error del servidor');
 
-                // Mostrar resultados y guardar datos
+                // --- CAMBIO: GUARDAMOS TODOS LOS DATOS RECIBIDOS ---
                 outputContainer.innerHTML = data.articleHtml;
                 generatedSeoData = data.seo;
+                featuredImageUrl = data.featuredImageUrl; // <-- AQUÍ
+                
                 actionsContainer.classList.remove('hidden');
 
-                // Habilitar botones de WP si es posible
                 if (publishWpDraftBtn) publishWpDraftBtn.disabled = true;
                 if (publishWpPublicBtn) publishWpPublicBtn.disabled = true;
                 const canPublish = await checkUserSettings(userId);
@@ -136,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. LISTENERS PARA LOS BOTONES DE ACCIÓN ---
+    // --- SIN CAMBIOS EN LOS LISTENERS DE ACCIÓN ---
     if (copyBtn) copyBtn.addEventListener('click', () => {
         if (outputContainer) navigator.clipboard.writeText(outputContainer.innerText);
         alert("Texto copiado al portapapeles.");
@@ -157,5 +154,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (publishWpDraftBtn) publishWpDraftBtn.addEventListener('click', () => handlePublish('draft'));
     if (publishWpPublicBtn) publishWpPublicBtn.addEventListener('click', () => handlePublish('publish'));
-
 });
