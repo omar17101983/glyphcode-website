@@ -1,7 +1,9 @@
-// redactor-articulos.js (VERSIÓN FINAL, SIN VUELTAS)
+// ======================================================================
+// ARCHIVO COMPLETO: redactor-articulos.js (VERSIÓN 4.0 - AUTOMÁTICA)
+// ======================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Referencias a elementos
+    // --- 1. REFERENCIAS A ELEMENTOS DEL DOM ---
     const form = document.getElementById('article-generator-form');
     const generateBtn = document.getElementById('generate-btn');
     const outputContainer = document.getElementById('generated-article');
@@ -11,14 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const publishWpDraftBtn = document.getElementById('publish-draft-btn');
     const publishWpPublicBtn = document.getElementById('publish-public-btn');
 
-    // Comprobación inicial
-    if (!form || !generateBtn || !actionsContainer) {
-        console.error("Falta un elemento HTML esencial (formulario, botón de generar o contenedor de acciones). Revisa los IDs.");
-        return;
-    }
+    // Variable global en este script para guardar los datos SEO generados
+    let generatedSeoData = {};
 
-    // Funciones auxiliares
+    // --- 2. FUNCIONES AUXILIARES ---
+
+    // Función para comprobar si el usuario tiene WP configurado
     async function checkUserSettings(userId) {
+        if (!userId) return false;
         try {
             const response = await fetch(`https://api.glyphcode.com/api/wp-settings?userId=${userId}`);
             if (!response.ok) return false;
@@ -30,111 +32,130 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Función para publicar en WordPress
     async function handlePublish(status) {
-    const userId = localStorage.getItem('userId');
-    const title = document.getElementById('article-title').value;
-    const content = outputContainer.innerHTML;
-    const buttonToUpdate = status === 'draft' ? publishWpDraftBtn : publishWpPublicBtn;
-
-    const originalText = buttonToUpdate.innerHTML;
-    buttonToUpdate.disabled = true;
-    buttonToUpdate.innerHTML = `<span class="spinner"></span> PUBLICANDO...`;
-    
-    // --- RECOGEMOS TODOS LOS DATOS NUEVOS DEL FORMULARIO ---
-    const dataToSend = {
-        userId,
-        title,
-        content,
-        status,
-        focus_keyword: document.getElementById('focus_keyword').value,
-        seo_title: document.getElementById('seo_title').value,
-        meta_description: document.getElementById('meta_description').value,
-        wp_tags: document.getElementById('wp_tags').value,
-        wp_categories: document.getElementById('wp_categories').value,
-    };
-
-    try {
-        const response = await fetch('https://api.glyphcode.com/api/publish-to-wp', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            // Enviamos el objeto completo
-            body: JSON.stringify(dataToSend),
-        });
-
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.error || `Error del servidor: ${response.status}`);
-        alert(`${result.message}\nEnlace: ${result.postLink}`);
-
-    } catch (error) {
-        console.error(`Error al publicar como ${status}:`, error);
-        alert(`Error de publicación: ${error.message}`);
-    } finally {
-        buttonToUpdate.innerHTML = originalText;
-        buttonToUpdate.disabled = false;
-    }
-}
-
-    // Listener del formulario
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
         const userId = localStorage.getItem('userId');
-        if (!userId) { window.location.href = '/login-generador-ia.html'; return; }
+        const title = document.getElementById('article-title').value;
+        const content = outputContainer.innerHTML;
+        const wp_category_id = document.getElementById('wp_category_id').value;
+        const buttonToUpdate = status === 'draft' ? publishWpDraftBtn : publishWpPublicBtn;
 
-        generateBtn.disabled = true;
-        generateBtn.innerHTML = `<span class="spinner"></span>GENERANDO...`;
-        actionsContainer.classList.add('hidden');
-        if(publishWpDraftBtn) publishWpDraftBtn.disabled = true;
-        if(publishWpPublicBtn) publishWpPublicBtn.disabled = true;
+        if (!buttonToUpdate) return;
+        const originalText = buttonToUpdate.innerHTML;
+        buttonToUpdate.disabled = true;
+        buttonToUpdate.innerHTML = `<span class="spinner"></span> PUBLICANDO...`;
+        
+        const dataToSend = {
+            userId,
+            title,
+            content,
+            status,
+            wp_category_id,
+            seoData: generatedSeoData, // Usamos los datos SEO que guardamos antes
+        };
 
         try {
-            const formData = new FormData(form);
-            const settings = Object.fromEntries(formData.entries());
-            const prompt = `Genera un artículo sobre "${settings['article-title']}" con las keywords "${settings.keywords}". Incluye 3 marcadores de imagen [IMAGEN: descripción].`;
-            
-            const response = await fetch('https://api.glyphcode.com/api/generate-article', {
+            const response = await fetch('https://api.glyphcode.com/api/publish-to-wp', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    prompt: prompt,
-                    userId: userId,
-                    articleKeywords: settings.keywords,
-                    includeFeaturedImage: true
-                })
+                body: JSON.stringify(dataToSend),
             });
-
-            const data = await response.json();
-            if (!response.ok) throw new Error(data.error || 'Error del servidor');
-
-            outputContainer.innerHTML = data.articleHtml;
-            actionsContainer.classList.remove('hidden'); // <-- La línea clave
-
-            const canPublish = await checkUserSettings(userId);
-            if (canPublish) {
-                if(publishWpDraftBtn) publishWpDraftBtn.disabled = false;
-                if(publishWpPublicBtn) publishWpPublicBtn.disabled = false;
-            }
-
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.error || `Error del servidor: ${response.status}`);
+            alert(`Éxito: ${result.message}\nEnlace: ${result.postLink}`);
         } catch (error) {
-            outputContainer.innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
+            console.error(`Error al publicar como ${status}:`, error);
+            alert(`Error de publicación: ${error.message}`);
         } finally {
-            generateBtn.disabled = false;
-            generateBtn.innerHTML = `Generar de Nuevo`;
+            buttonToUpdate.innerHTML = originalText;
+            buttonToUpdate.disabled = false;
         }
-    });
+    }
 
-    // Listeners para los botones de acción
-    if(copyBtn) copyBtn.addEventListener('click', () => navigator.clipboard.writeText(outputContainer.innerText));
-    if(downloadHtmlBtn) {
-        downloadHtmlBtn.addEventListener('click', () => {
-            const blob = new Blob([outputContainer.innerHTML], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'articulo.html';
-            a.click();
-            URL.revokeObjectURL(url);
+    // --- 3. LISTENER PRINCIPAL DEL FORMULARIO ---
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userId = localStorage.getItem('userId');
+            if (!userId) { window.location.href = '/login-generador-ia.html'; return; }
+
+            // Resetear estado
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = `<span class="spinner"></span>GENERANDO...`;
+            actionsContainer.classList.add('hidden');
+            generatedSeoData = {}; // Limpiar datos SEO anteriores
+
+            try {
+                const formData = new FormData(form);
+                const settings = Object.fromEntries(formData.entries());
+                
+                const seoOptions = {
+                    generate_focus_keyword: formData.has('generate_focus_keyword'),
+                    generate_seo_title: formData.has('generate_seo_title'),
+                    generate_meta_description: formData.has('generate_meta_description'),
+                    generate_tags: formData.has('generate_tags'),
+                };
+
+                const mainPrompt = `Genera un artículo sobre "${settings['article-title']}" usando las keywords: "${settings.keywords}". Incluye 3 marcadores de imagen [IMAGEN: descripción detallada].`;
+
+                const response = await fetch('https://api.glyphcode.com/api/generate-article', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        mainPrompt,
+                        userId,
+                        articleKeywords: settings.keywords,
+                        includeFeaturedImage: true,
+                        seoOptions,
+                    })
+                });
+
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'Error del servidor');
+
+                // Mostrar resultados y guardar datos
+                outputContainer.innerHTML = data.articleHtml;
+                generatedSeoData = data.seo;
+                actionsContainer.classList.remove('hidden');
+
+                // Habilitar botones de WP si es posible
+                if (publishWpDraftBtn) publishWpDraftBtn.disabled = true;
+                if (publishWpPublicBtn) publishWpPublicBtn.disabled = true;
+                const canPublish = await checkUserSettings(userId);
+                if (canPublish) {
+                    if (publishWpDraftBtn) publishWpDraftBtn.disabled = false;
+                    if (publishWpPublicBtn) publishWpPublicBtn.disabled = false;
+                }
+
+            } catch (error) {
+                outputContainer.innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = `Generar de Nuevo`;
+            }
         });
     }
-    if(publishWpDraftBtn) publishWpDraftBtn.addEventListener('click', () => handlePublish('draft'));
-    if(publishWpPublicBtn) publishWpPublicBtn.addEventListener('click', () => handlePublish('publish'));
+
+    // --- 4. LISTENERS PARA LOS BOTONES DE ACCIÓN ---
+    if (copyBtn) copyBtn.addEventListener('click', () => {
+        if (outputContainer) navigator.clipboard.writeText(outputContainer.innerText);
+        alert("Texto copiado al portapapeles.");
+    });
+    
+    if (downloadHtmlBtn) downloadHtmlBtn.addEventListener('click', () => {
+        if (!outputContainer) return;
+        const blob = new Blob([outputContainer.innerHTML], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'articulo.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+    if (publishWpDraftBtn) publishWpDraftBtn.addEventListener('click', () => handlePublish('draft'));
+    if (publishWpPublicBtn) publishWpPublicBtn.addEventListener('click', () => handlePublish('publish'));
+
 });

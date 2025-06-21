@@ -108,27 +108,32 @@
                 <!-- Pega esta sección en redactor-articulos.html -->
 
 <div class="generator-section">
-    <h3 class="generator-section-title">Configuración SEO (para Yoast)</h3>
-    <div class="form-group">
-        <label for="focus_keyword">Palabra Clave Principal (Focus Keyword)</label>
-        <input type="text" id="focus_keyword" name="focus_keyword" placeholder="La keyword más importante para Yoast SEO">
+    <h3 class="generator-section-title">Generación SEO Automática (con IA)</h3>
+    <p class="page-subtitle" style="text-align: left; margin: -15px 0 25px 0; font-size: 0.9rem;">Activa las opciones que deseas que la IA genere y configure automáticamente en Yoast SEO.</p>
+    
+    <div class="structure-grid">
+        <div class="form-group toggle-group">
+            <label for="generate_focus_keyword">Generar Palabra Clave Principal</label>
+            <label class="toggle-switch"><input type="checkbox" id="generate_focus_keyword" name="generate_focus_keyword" checked><span class="slider"></span></label>
+        </div>
+        <div class="form-group toggle-group">
+            <label for="generate_seo_title">Generar Título SEO</label>
+            <label class="toggle-switch"><input type="checkbox" id="generate_seo_title" name="generate_seo_title" checked><span class="slider"></span></label>
+        </div>
+        <div class="form-group toggle-group">
+            <label for="generate_meta_description">Generar Metadescripción</label>
+            <label class="toggle-switch"><input type="checkbox" id="generate_meta_description" name="generate_meta_description" checked><span class="slider"></span></label>
+        </div>
+        <div class="form-group toggle-group">
+            <label for="generate_tags">Generar Etiquetas</label>
+            <label class="toggle-switch"><input type="checkbox" id="generate_tags" name="generate_tags" checked><span class="slider"></span></label>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="seo_title">Título SEO</label>
-        <input type="text" id="seo_title" name="seo_title" placeholder="Opcional: si quieres un título para Google diferente al del artículo">
-    </div>
-    <div class="form-group">
-        <label for="meta_description">Metadescripción</label>
-        <textarea id="meta_description" name="meta_description" rows="3" placeholder="El texto que aparecerá en Google (155-160 caracteres recomendados)"></textarea>
-    </div>
-     <div class="form-group">
-        <label for="wp_tags">Etiquetas (separadas por comas)</label>
-        <input type="text" id="wp_tags" name="wp_tags" placeholder="tecnologia, innovacion, autos">
-    </div>
-    <div class="form-group">
-        <label for="wp_categories">ID de la Categoría</label>
-        <input type="number" id="wp_categories" name="wp_categories" placeholder="Ej: 1 (ID de la categoría en WordPress)">
-        <small class="form-hint">Ve a Entradas > Categorías en tu WP, edita una y mira la URL para encontrar su ID.</small>
+    
+    <div class="form-group" style="margin-top: 25px;">
+        <label for="wp_category_id">ID de la Categoría por Defecto</label>
+        <input type="number" id="wp_category_id" name="wp_category_id" placeholder="Ej: 1 (ID de la categoría en WordPress)">
+        <small class="form-hint">Este ID se usará para todos los artículos. Puedes encontrarlo en Entradas > Categorías en tu WP.</small>
     </div>
 </div>
 
