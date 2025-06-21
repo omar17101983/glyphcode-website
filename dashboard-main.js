@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch('/api/get-user-status', {
+        const response = await fetch('https://api.glyphcode.com/api/get-user-status', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: userId }),

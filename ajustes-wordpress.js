@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!data.wpPassword) delete data.wpPassword;
 
         try {
-            const response = await fetch('/api/wp-settings', {
+            const response = await fetch('https://api.glyphcode.com/api/wp-settings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // ----- CAMBIO CLAVE AQUÍ -----
             // Ahora pasamos el userId como un parámetro de la URL (query parameter)
             // Ya no hay 'body' en la petición GET.
-            const response = await fetch(`/api/wp-settings?userId=${userId}`, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-            });
+            const response = await fetch(`https://api.glyphcode.com/api/wp-settings?userId=${userId}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+});
             // -----------------------------
             
             if (!response.ok) {
