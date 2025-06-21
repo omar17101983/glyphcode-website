@@ -64,94 +64,54 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonToUpdate.disabled = true;
         buttonToUpdate.innerHTML = `<span class="spinner"></span> PUBLICANDO...`;
         
-        try {
-            const response = await fetch('https://api.glyphcode.com/api/publish-to-wp', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, title, content, status }),
-            });
+        // Reemplaza el bloque try...catch...finally en tu form.addEventListener
 
-            const result = await response.json();
-            
-            if (!response.ok) {
-                throw new Error(result.error || `Error del servidor: ${response.status}`);
-            }
+try {
+    // 1. Hacemos la llamada a la API para generar el artículo
+    const response = await fetch('https://api.glyphcode.com/api/generate-article', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            prompt: detailedPrompt,
+            userId,
+            articleKeywords: settings.keywords,
+            includeFeaturedImage: form.querySelector('input[name="include-featured-image"]').checked
+        })
+    });
 
-            alert(`${result.message}\nEnlace: ${result.postLink}`);
-
-        } catch (error) {
-            console.error(`Error al publicar como ${status}:`, error);
-            alert(`Error de publicación: ${error.message}`);
-        } finally {
-            buttonToUpdate.innerHTML = originalText;
-            buttonToUpdate.disabled = false;
-        }
-    }
-    
-    // --- 3. EVENT LISTENERS PRINCIPALES ---
-
-    // Listener para el envío del formulario de generación
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault(); // <-- ¡ESTA ES LA LÍNEA MÁS IMPORTANTE! Evita que la página se recargue.
-
-            const userId = localStorage.getItem('userId');
-            if (!userId) {
-                window.location.href = '/login-generador-ia.html';
-                return;
-            }
-
-            // Deshabilitar botones de publicación para la nueva generación
-            if (publishWpDraftBtn) publishWpDraftBtn.disabled = true;
-            if (publishWpPublicBtn) publishWpPublicBtn.disabled = true;
-
-            const formData = new FormData(form);
-            const settings = Object.fromEntries(formData.entries());
-            const detailedPrompt = constructPrompt(settings);
-
-            generateBtn.disabled = true;
-            generateBtn.innerHTML = `<span class="spinner"></span>GENERANDO...`;
-            outputContainer.innerHTML = `<div class="thinking-animation"><p>Verificando límites, contactando al modelo y buscando imágenes...</p></div>`;
-            outputWrapper.style.display = 'block';
-            actionsContainer.classList.add('hidden');
-
-            try {
-                const response = await fetch('https://api.glyphcode.com/api/generate-article', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        prompt: detailedPrompt,
-                        userId,
-                        articleKeywords: settings.keywords,
-                        includeFeaturedImage: form.querySelector('input[name="include-featured-image"]').checked
-                    })
-                });
-    // ... tu código fetch ...
     const data = await response.json();
     if (!response.ok) {
         throw new Error(data.error || 'Error del servidor.');
     }
 
-    // 1. Pones el contenido del artículo en la página
+    // 2. Mostramos el contenido del artículo en la página
     outputContainer.innerHTML = data.articleHtml;
 
-    // 2. ¡AQUÍ ESTÁ LA MAGIA! Quitas la clase 'hidden' para que los botones aparezcan
+    // --- CAMBIO CLAVE ---
+    // 3. MOSTRAMOS INMEDIATAMENTE el contenedor de acciones.
+    //    Ahora los botones "Copiar" y "Descargar" serán visibles.
     actionsContainer.classList.remove('hidden');
 
-    // 3. Compruebas si se puede publicar en WP para habilitar esos botones específicos
-    const canPublishToWp = await checkUserSettings(userId);
-    if (canPublishToWp) {
-        if (publishWpDraftBtn) publishWpDraftBtn.disabled = false;
-        if (publishWpPublicBtn) publishWpPublicBtn.disabled = false;
-    }
+    // 4. DESPUÉS de mostrar los botones, intentamos habilitar los de WordPress.
+    //    Si esto falla, los otros botones ya estarán visibles.
+    checkUserSettings(userId).then(canPublish => {
+        if (canPublish) {
+            console.log("Ajustes de WP correctos. Habilitando botones.");
+            if (publishWpDraftBtn) publishWpDraftBtn.disabled = false;
+            if (publishWpPublicBtn) publishWpPublicBtn.disabled = false;
+        } else {
+            console.log("No se pudo verificar los ajustes de WP o no están configurados. Los botones de publicación permanecerán deshabilitados.");
+        }
+    });
 
-} catch (error) { //...
-                outputContainer.innerHTML = `<p class="placeholder-text error-message">Error: ${error.message}.</p>`;
-            } finally {
-                generateBtn.disabled = false;
-                generateBtn.innerHTML = `<svg xmlns="https://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Generar de Nuevo`;
-            }
-        });
+} catch (error) {
+    outputContainer.innerHTML = `<p class="placeholder-text error-message">Error: ${error.message}.</p>`;
+    // Asegurémonos de que los botones permanezcan ocultos si hay un error
+    actionsContainer.classList.add('hidden');
+} finally {
+    generateBtn.disabled = false;
+    generateBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Generar de Nuevo`;
+}
     }
 
     // Listeners para los botones de acción del contenido generado
