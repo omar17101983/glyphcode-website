@@ -1,7 +1,6 @@
-// ajustes-wordpress.js (CORREGIDO Y COMPLETO)
+// ajustes-wordpress.js (VERSIÓN CORREGIDA)
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'https://api.glyphcode.com'; // URL centralizada de tu backend
     const container = document.getElementById('wp-settings-container');
     const userId = localStorage.getItem('userId');
 
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
-    // La función para renderizar el formulario no cambia
+    // --- FUNCIÓN renderForm (sin cambios) ---
     const renderForm = (settings = {}) => {
         container.innerHTML = `
             <div class="generator-section">
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('wp-settings-form').addEventListener('submit', handleFormSubmit);
     };
 
-    // La función que maneja el envío del formulario cambia para usar la nueva URL
+    // --- FUNCIÓN handleFormSubmit (sin cambios) ---
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         const saveBtn = document.getElementById('save-settings-btn');
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!data.wpPassword) delete data.wpPassword;
 
         try {
-            const response = await fetch(`${API_URL}/api/wp-settings`, { // Usando la nueva URL
+            const response = await fetch('/api/wp-settings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
@@ -84,13 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // La función que carga los datos también cambia
+    // --- Lógica principal (MODIFICADA) ---
     const loadSettings = async () => {
         try {
-            const response = await fetch(`${API_URL}/api/wp-settings?userId=${userId}`, { // Usando la nueva URL
+            // ----- CAMBIO CLAVE AQUÍ -----
+            // Ahora pasamos el userId como un parámetro de la URL (query parameter)
+            // Ya no hay 'body' en la petición GET.
+            const response = await fetch(`/api/wp-settings?userId=${userId}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });
+            // -----------------------------
             
             if (!response.ok) {
                  const errorData = await response.json();

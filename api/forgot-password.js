@@ -1,4 +1,4 @@
-// api/forgot-password.js
+// api/forgot-password.js (CORREGIDO PARA VPS)
 
 import { PrismaClient } from '@prisma/client';
 import nodemailer from 'nodemailer';
@@ -26,29 +26,22 @@ export default async function handler(req, res) {
     try {
         const user = await prisma.user.findUnique({ where: { email } });
 
-        // Importante: aunque no encontremos el usuario, devolvemos un mensaje genérico
-        // para no revelar qué correos están registrados y cuáles no.
         if (!user) {
             return res.status(200).json({ message: 'Si tu correo está registrado, recibirás un enlace.' });
         }
 
-        // 1. Generar un token seguro
         const resetToken = crypto.randomBytes(32).toString('hex');
         const passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+        const passwordResetTokenExpiry = new Date(Date.now() + 3600000);
 
-        // 2. Establecer una fecha de expiración (ej: 1 hora)
-        const passwordResetTokenExpiry = new Date(Date.now() + 3600000); // 1 hora
-
-        // 3. Guardar el token (hasheado) y la expiración en la base de datos
         await prisma.user.update({
             where: { email },
             data: { passwordResetToken, passwordResetTokenExpiry },
         });
 
-        // 4. Crear la URL de reseteo (IMPORTANTE: cambia 'TU_DOMINIO.com' por tu dominio real cuando lo despliegues)
-        const resetUrl =`https://glyphcode.com/reset-password.html?token=${resetToken}`;
+        // --- ÚNICO CAMBIO CRÍTICO AQUÍ ---
+        const resetUrl = `https://glyphcode.com/reset-password.html?token=${resetToken}`;
 
-        // 5. Enviar el email
         await transporter.sendMail({
             from: `"GlyphCode" <${process.env.GMAIL_USER}>`,
             to: user.email,
